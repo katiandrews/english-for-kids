@@ -1,7 +1,11 @@
-export const App = () => {
+import Header from './components/header/header';
+import Main from './components/Main/Main';
+
+export default function App() {
   return (
     <>
-      <h1>React TypeScript Webpack Starter Template</h1>
+      <Header />
+      <Main />
     </>
-  )
+  );
 }

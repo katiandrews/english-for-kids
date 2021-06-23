@@ -1,0 +1,14 @@
+.main-header {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 48px 10%;
+
+   & .menu-icon {
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
