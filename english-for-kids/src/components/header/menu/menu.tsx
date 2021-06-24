@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import MenuIcon from '../../../assets/img/menu.svg';
 import './menu.scss';
 
-export default function Menu({ navItems, setCategory }: { navItems: string[]; setCategory: React.Dispatch<React.SetStateAction<number>> }) {
+export default function Menu({ navItems, setCategory }: {
+  navItems: string[]; setCategory: React.Dispatch<React.SetStateAction<number>>
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<number>(100);
 

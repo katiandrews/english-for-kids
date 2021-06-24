@@ -9,10 +9,10 @@ import { ICategory } from './shared/models/category-model';
 export default function App() {
   const [category, setCategory] = useState(0);
   const [cards, setCards] = useState<ICategory[]>([{
-    "id": 0,
-    "name": "",
-    "imageUrl": "",
-    "cards": []
+    id: 0,
+    name: '',
+    imageUrl: '',
+    cards: [],
   }]);
 
   useEffect(() => {
@@ -26,12 +26,11 @@ export default function App() {
     <>
       <Header setCategory={setCategory} />
       <main className="main">
-        <Route path='/' render={() => <Main items={cards} />} exact />
-        <Route path='/category' render={() => <Category category={cards[category]} />} exact />
+        <Route path='/' render={() => <Main items={cards} setCategory={setCategory} />} exact />
+        <Route path='/category'
+          render={() => <Category category={cards[category]} setCategory={setCategory} />} exact />
         <Route path='/statistics' component={Statistics} exact />
       </main>
     </>
   );
 }
-
-

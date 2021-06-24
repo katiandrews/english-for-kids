@@ -1,4 +1,4 @@
-import { IWord } from "./WordCard";
+import { IWord } from './WordCard';
 
 export interface ICategory {
   id: number;

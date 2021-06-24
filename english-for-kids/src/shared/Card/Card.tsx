@@ -1,12 +1,24 @@
-import { Route } from "react-router-dom";
-import { IWord } from "../models/WordCard";
+import { Route } from 'react-router-dom';
+import { IWord } from '../models/WordCard';
 import './Card.scss';
 
-export default function Card({ name, imageUrl, cards }: { name: string, imageUrl: string, cards: IWord[] }) {
+export default function Card({
+  id, name, imageUrl, cards, setCategory,
+}: {
+  id: number;
+  name: string,
+  imageUrl: string,
+  cards: IWord[],
+  setCategory: React.Dispatch<React.SetStateAction<number>>
+}) {
+  const openCategory = (index: number) => {
+    setCategory(index);
+  };
+
   return (
     <div className="card">
       <Route path='/' exact >
-        <div className="card-front">
+        <div className="card-front" onClick={() => openCategory(id)}>
           <img src={imageUrl} alt="" className="card-image" />
           <div className="card-description">
             <h2 className="card-name">{name}</h2>
