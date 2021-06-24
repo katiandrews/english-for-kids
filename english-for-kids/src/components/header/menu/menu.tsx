@@ -1,22 +1,38 @@
-import { useState } from 'react';
-import MenuIcon from '../../../assets/menu.svg';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import MenuIcon from '../../../assets/img/menu.svg';
 import './menu.scss';
 
-export default function Menu({ navItems, onClickItem }: { navItems: string[], onClickItem: (item: string) => void; }) {
-  const [menuActive, setMenuActive] = useState(false);
+export default function Menu({ navItems, setCategory }: { navItems: string[]; setCategory: React.Dispatch<React.SetStateAction<number>> }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState<number>(100);
+
+  const selectMenuItem = (index: number) => {
+    setActiveItem(index);
+    setCategory(index);
+    setMenuOpen(false);
+  };
 
   return (
     <div className="menu">
-      <MenuIcon className="menu-icon" onClick={() => setMenuActive(!menuActive)} />
-      <nav className={menuActive ? 'main-nav active' : 'main-nav'}>
-        <ul className='nav-list'>
-          {
-            navItems.map((item, index) => (
-              <li
-                onClick={() => onClickItem(item)}
-                className='nav-list-item' key={`${item}_${index}`}>{item}
-              </li>
-            ))}
+      <MenuIcon className="menu-icon" onClick={() => setMenuOpen(!menuOpen)} />
+      <nav className={menuOpen ? 'main-nav active' : 'main-nav'} onClick={() => setMenuOpen(false)}>
+        <ul className='nav-list' onClick={(e) => e.stopPropagation()}>
+          <Link to='/'>
+            <li onClick={() => { selectMenuItem(100); }}
+              className={activeItem === 100 ? 'nav-list-item active' : 'nav-list-item'}
+            >Main page</li>
+          </Link>
+          <Link to='/category'>
+            {
+              navItems.map((item, index) => (
+                <li
+                  onClick={() => selectMenuItem(index)}
+                  className={activeItem === index ? 'nav-list-item active' : 'nav-list-item'}
+                  key={`${item}_${index}`}>{item}
+                </li>
+              ))}
+          </Link>
         </ul>
       </nav>
     </div >

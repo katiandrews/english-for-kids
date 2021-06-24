@@ -1,10 +1,18 @@
-import Categories from './Categories/Categories';
 import './Main.scss';
+import Card from '../../shared/Card/Card';
+import { ICategory } from '../../shared/models/category-model';
 
-export default function Main() {
+export default function Main({ items }: { items: ICategory[] | undefined }) {
   return (
-    <main className="main">
-      <Categories />
-    </main>
+    <>
+      <h1 className='page-title'>Train & play</h1>
+      <div className="categories">
+        {
+          items?.map((card) => (
+            <Card key={card.id} {...card} />
+          ))
+        }
+      </div>
+    </>
   );
 }
