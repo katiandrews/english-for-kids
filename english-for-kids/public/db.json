@@ -1,0 +1,166 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": "Animals",
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/002/382/021/large_2x/cute-animal-icon-set-free-vector.jpg",
+      "cards": [
+        {
+          "word": "Raccoon",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/299/482/large_2x/vector-gray-raccoon-with-happy-face.jpg",
+          "audio": ""
+        },
+        {
+          "word": "Beaver",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/295/457/non_2x/vector-beaver-in-circle-banner.jpg",
+          "audio": ""
+        },
+        {
+          "word": "Panda",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/367/590/non_2x/vector-panda.jpg",
+          "audio": ""
+        },
+        {
+          "word": "Crocodile",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/531/736/large_2x/cute-cartoon-crocodile-alligator-on-white-background-vector-illustration.jpg",
+          "audio": ""
+        },
+        {
+          "word": "Raven",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/299/181/large_2x/ravan-on-white-background-vector.jpg",
+          "audio": ""
+        },
+        {
+          "word": "Turtle",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/369/176/large_2x/cute-turtle-with-happy-face-vector.jpg",
+          "audio": ""
+        },
+        {
+          "word": "Camel",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/001/426/822/large_2x/isolated-camel-on-white-background-free-vector.jpg",
+          "audio": ""
+        },
+        {
+          "word": "Hedgehog",
+          "imageUrl": "https://static.vecteezy.com/system/resources/previews/002/047/547/large_2x/cute-baby-hedgehog-illustration-vector.jpg",
+          "audio": ""
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Emotions",
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/447/824/non_2x/vector-human-faces-with-different-emotions.jpg",
+      "cards": [
+        {
+          "word": "Happy",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Excited",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Ashamed",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Indifferent",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Frightened",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Crazy",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Thoughtful",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Sneaky",
+          "imageUrl": "",
+          "audio": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Activities",
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/002/244/596/large_2x/cute-kids-character-with-school-activities-free-vector.jpg",
+      "cards": [
+        {
+          "word": "Dance",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Swimming",
+          "imageUrl": "",
+          "audio": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Professions",
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/445/566/non_2x/set-of-people-with-different-job-vector.jpg",
+      "cards": [
+        {
+          "word": "Racoon",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Chipmunk",
+          "imageUrl": "",
+          "audio": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Adventure",
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/002/317/609/large_2x/summer-camp-icon-collection-free-vector.jpg",
+      "cards": [
+        {
+          "word": "Racoon",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Chipmunk",
+          "imageUrl": "",
+          "audio": ""
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Home",
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/000/224/423/non_2x/vector-living-room-interior-illustration.jpg",
+      "cards": [
+        {
+          "word": "Racoon",
+          "imageUrl": "",
+          "audio": ""
+        },
+        {
+          "word": "Chipmunk",
+          "imageUrl": "",
+          "audio": ""
+        }
+      ]
+    }
+  ]
+}

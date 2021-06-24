@@ -2,12 +2,13 @@ import Menu from './menu/menu';
 import './header.scss';
 import ToggleButton from '../../shared/toggleButton/toggleButton';
 
-export default function Header() {
+export default function Header({ setCategory }: { setCategory: React.Dispatch<React.SetStateAction<number>> }) {
+  console.log(setCategory)
   return (
     <header className='main-header'>
       <Menu
-        onClickItem={(item) => console.log(item)}
-        navItems={['Main page', 'Animals', 'Emotions', 'Flowers', 'Professions', 'Nature', 'Home']} />
+        setCategory={setCategory}
+        navItems={['Animals', 'Emotions', 'Flowers', 'Professions', 'Nature', 'Home']} />
       <ToggleButton />
     </header>
   );

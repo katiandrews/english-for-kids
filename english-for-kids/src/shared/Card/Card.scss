@@ -1,3 +1,16 @@
 .card {
-  z-index: -1;
+  width: calc(100% / 4 + 60px);
+  cursor: pointer;
+  background-color: white;
+  border-radius: 20px;
+
+  & .card-front {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .card-image {
+    height: 200px;
+    border-radius: 20px;
+  }
 }
