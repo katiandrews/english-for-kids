@@ -3,7 +3,6 @@ import './header.scss';
 import ToggleButton from '../../shared/toggleButton/toggleButton';
 
 export default function Header({ setCategory }: { setCategory: React.Dispatch<React.SetStateAction<number>> }) {
-  console.log(setCategory)
   return (
     <header className='main-header'>
       <Menu

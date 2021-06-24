@@ -6,5 +6,12 @@
     row-gap: 50px;
     column-gap: 56px;
     margin-bottom: 88px;
+
+    & a {
+      width: calc(100% / 4 + 60px);
+      margin: 0;
+      display: block;
+      text-decoration: none;
+    }
   }
 }
