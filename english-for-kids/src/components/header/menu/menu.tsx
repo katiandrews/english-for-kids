@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { createDispatchHook, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MenuIcon from '../../../assets/img/menu.svg';
+import setCategory from '../../../redux/actions/activeCategory';
+import { MAIN_PAGE } from '../../../shared/constants';
+import { ICategory } from '../../../shared/models/category-model';
 import './menu.scss';
 
-export default function Menu({ navItems, setCategory }: {
-  navItems: string[]; setCategory: React.Dispatch<React.SetStateAction<number>>
-}) {
+export default function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState<number>(100);
+  const [activeItem, setActiveItem] = useState<number>(MAIN_PAGE);
 
-  const selectMenuItem = (index: number) => {
+  const dispatch = useDispatch();
+  const cards = useSelector(
+    ({ categories }: { categories: { items: ICategory[] } }) => categories.items);
+
+  const onSelectCategory = (index: number) => {
+    if (index !== MAIN_PAGE) {
+      dispatch(setCategory(index));
+    }
     setActiveItem(index);
-    setCategory(index);
     setMenuOpen(false);
   };
 
@@ -21,17 +29,17 @@ export default function Menu({ navItems, setCategory }: {
       <nav className={menuOpen ? 'main-nav active' : 'main-nav'} onClick={() => setMenuOpen(false)}>
         <ul className='nav-list' onClick={(e) => e.stopPropagation()}>
           <Link to='/'>
-            <li onClick={() => { selectMenuItem(100); }}
-              className={activeItem === 100 ? 'nav-list-item active' : 'nav-list-item'}
+            <li onClick={() => { onSelectCategory(MAIN_PAGE); }}
+              className={activeItem === MAIN_PAGE ? 'nav-list-item active' : 'nav-list-item'}
             >Main page</li>
           </Link>
           <Link to='/category'>
             {
-              navItems.map((item, index) => (
+              cards.map((card, index) => (
                 <li
-                  onClick={() => selectMenuItem(index)}
+                  onClick={() => onSelectCategory(index)}
                   className={activeItem === index ? 'nav-list-item active' : 'nav-list-item'}
-                  key={`${item}_${index}`}>{item}
+                  key={`${card}_${index}`}>{card.name}
                 </li>
               ))}
           </Link>
