@@ -1,5 +1,6 @@
 export interface IWord {
-  word: string,
-  imageUrl: string,
-  audio: string
+  word: string;
+  wordImage: string;
+  audio: string;
+  translation: string
 }

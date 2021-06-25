@@ -1,15 +1,31 @@
 .card {
-  background-color: white;
+  background-color: #fff;
   border-radius: 20px;
   cursor: pointer;
+  box-shadow: -1px 2px 5px 1px rgba(92, 92, 92, 0.1);
+  transition: 400ms;
 
-  & .card-front {
-    display: flex;
-    flex-direction: column;
+  &:hover {
+    box-shadow: -1px 2px 12px 8px rgba(92, 92, 92, 0.15);
+    transform: translateY(-6px);
+    transition: 400ms;
   }
 
   & .card-image {
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
     height: 200px;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 1px solid rgba(97, 97, 97, 0.11);
+  }
+
+  & .card-description {
+    padding: 12px 16px;
+
+    & .card-name {
+      margin: 0;
+    }
   }
 }

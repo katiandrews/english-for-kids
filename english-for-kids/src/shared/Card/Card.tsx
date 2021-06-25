@@ -1,25 +1,27 @@
+import { useDispatch } from 'react-redux';
+import setCategory from '../../redux/actions/activeCategory';
 import { Route } from 'react-router-dom';
 import { IWord } from '../models/WordCard';
 import './Card.scss';
 
 export default function Card({
-  id, name, imageUrl, cards, setCategory,
+  id, name, imageUrl, cards, translation, word, wordImage, onClick
 }: {
   id: number;
   name: string,
   imageUrl: string,
   cards: IWord[],
-  setCategory: React.Dispatch<React.SetStateAction<number>>
+  translation: string,
+  word: string,
+  wordImage: string,
+  onClick: () => void
 }) {
-  const openCategory = (index: number) => {
-    setCategory(index);
-  };
 
   return (
-    <div className="card">
+    <div className="card" onClick={onClick}>
       <Route path='/' exact >
-        <div className="card-front" onClick={() => openCategory(id)}>
-          <img src={imageUrl} alt="" className="card-image" />
+        <div className="card-front">
+          <div className="card-image" style={{ backgroundImage: `url('${imageUrl}')`, }}></div>
           <div className="card-description">
             <h2 className="card-name">{name}</h2>
             <span className="cards-quantity">{cards.length} cards</span>
@@ -28,15 +30,15 @@ export default function Card({
       </Route>
       <Route path='/category' exact >
         <div className="card-front">
-          <img src={imageUrl} alt="" className="card-image" />
+          <div className="card-image" style={{ backgroundImage: `url('${wordImage}')`, }}></div>
           <div className="card-description">
-            <h2 className="card-name">{name}</h2>
+            <h2 className="card-name">{word}</h2>
           </div>
         </div>
         <div className="card-back">
-          <div className="card-img"></div>
+          <div className="card-image" style={{ backgroundImage: `url('${wordImage}')`, }}></div>
           <div className="card-description">
-            <h2 className="card-name"></h2>
+            <h2 className="card-name">{translation}</h2>
           </div>
         </div>
       </Route>
