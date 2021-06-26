@@ -1,0 +1,89 @@
+.main {
+
+  & .categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 40px;
+    column-gap: 40px;
+    margin-bottom: 88px;
+
+    & a {
+      width: calc(100% / 4 - 30px);
+      margin: 0;
+      display: block;
+      text-decoration: none;
+      color: #000;
+    }
+
+    & .card {
+      height: auto;
+    }
+
+    & .card-front {
+      position: relative;
+    }
+
+    & .card-description {
+      display: grid;
+      grid-template-columns: 4fr 1fr;
+      grid-template-rows: 30px 20px;
+
+      & .indicator {
+        display: inline-block;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          justify-self: right;
+          align-self: flex-end;
+
+          &.train {
+            background-color: rgb(119, 0, 255);;
+          }
+
+          &.play {
+            background-color: rgb(255, 0, 255);
+          }
+      }
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .main {
+
+    & .categories {
+      row-gap: 40px;
+      column-gap: 24px;
+
+      & a {
+        width: calc(100% / 3 - 20px);
+      }
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .main {
+    & .categories {
+      row-gap: 24px;
+      column-gap: 16px;
+
+      & a {
+        width: calc(100% / 2 - 20px);
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    & .categories {
+      margin-bottom: 24px;
+
+      & a {
+        width: 100%;
+      }
+    }
+  }
+}

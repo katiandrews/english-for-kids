@@ -17,8 +17,8 @@ export default function CategoryPage() {
 
   return (
     <>
-      <h1>Category page</h1>
-      <div className="category">
+      <h1 className={'page-title'}>{category.name}</h1>
+      <div className='category'>
         {
           category.cards.map((card, index) => (
             <Card key={index} {...category} {...card} onClick={() => pronounceWord(card.audio)} />
