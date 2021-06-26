@@ -5,10 +5,10 @@ import Card from '../../shared/Card/Card';
 import { ICategory } from '../../shared/models/category-model';
 import './Main.scss';
 
-
 export default function Main() {
   const cards = useSelector(
-    ({ categories }: { categories: { items: ICategory[] } }) => categories.items);
+    ({ categories }: { categories: { items: ICategory[] } }) => categories.items,
+  );
 
   const dispatch = useDispatch();
 

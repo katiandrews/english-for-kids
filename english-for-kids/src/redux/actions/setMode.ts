@@ -1,6 +1,6 @@
 const setMode = (isTrain: boolean) => ({
   type: 'SET_MODE',
-  payload: isTrain
-})
+  payload: isTrain,
+});
 
 export default setMode;

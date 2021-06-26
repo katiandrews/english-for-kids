@@ -1,13 +1,11 @@
-import { useDispatch } from 'react-redux';
-import setCategory from '../../redux/actions/activeCategory';
 import { Route } from 'react-router-dom';
+import { useState } from 'react';
 import { IWord } from '../models/WordCard';
 import './Card.scss';
 
 export default function Card({
-  id, name, imageUrl, cards, translation, word, wordImage, onClick
+  name, imageUrl, cards, translation, word, wordImage, onClick,
 }: {
-  id: number;
   name: string,
   imageUrl: string,
   cards: IWord[],
@@ -16,12 +14,21 @@ export default function Card({
   wordImage: string,
   onClick: () => void
 }) {
+  const [flipped, setFlipState] = useState(false);
+
+  const flipCard = () => {
+    setFlipState(!flipped);
+  };
+
+  const offHandler = () => {
+    setFlipState(false);
+  };
 
   return (
-    <div className="card" onClick={onClick}>
+    <div className={flipped ? 'card flipped' : 'card'} onMouseLeave={offHandler}>
       <Route path='/' exact >
-        <div className="card-front">
-          <div className="card-image" style={{ backgroundImage: `url('${imageUrl}')`, }}></div>
+        <div className="card-front" onClick={onClick}>
+          <div className="card-image" style={{ backgroundImage: `url('${imageUrl}')` }}></div>
           <div className="card-description">
             <h2 className="card-name">{name}</h2>
             <span className="cards-quantity">{cards.length} cards</span>
@@ -29,14 +36,16 @@ export default function Card({
         </div>
       </Route>
       <Route path='/category' exact >
-        <div className="card-front">
-          <div className="card-image" style={{ backgroundImage: `url('${wordImage}')`, }}></div>
+        <div className="card-front train-mode" onClick={onClick}>
+          <div className="card-image" style={{ backgroundImage: `url('${wordImage}')` }}></div>
           <div className="card-description">
             <h2 className="card-name">{word}</h2>
+            <img src="https://image.flaticon.com/icons/png/512/1330/1330172.png" alt="" width="24"
+              onClick={flipCard} />
           </div>
         </div>
-        <div className="card-back">
-          <div className="card-image" style={{ backgroundImage: `url('${wordImage}')`, }}></div>
+        <div className="card-back train-mode">
+          <div className="card-image" style={{ backgroundImage: `url('${wordImage}')` }}></div>
           <div className="card-description">
             <h2 className="card-name">{translation}</h2>
           </div>

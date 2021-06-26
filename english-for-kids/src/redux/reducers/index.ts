@@ -6,7 +6,7 @@ import trainMode from './setMode';
 const rootReducer = combineReducers({
   categories,
   activeCategory,
-  trainMode
-})
+  trainMode,
+});
 
 export default rootReducer;

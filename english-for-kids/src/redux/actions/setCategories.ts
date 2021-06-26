@@ -1,8 +1,8 @@
-import { ICategory } from "../../shared/models/category-model";
+import { ICategory } from '../../shared/models/category-model';
 
 const setCategories = (categories: ICategory[]) => ({
   type: 'SET_CATEGORIES',
-  payload: categories
-})
+  payload: categories,
+});
 
 export default setCategories;

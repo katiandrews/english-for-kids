@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
-import { Route, Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Header from './components/header/header';
 import Main from './components/Main/Main';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import Statistics from './components/Statistics/Statistics';
 import { ICategory } from './shared/models/category-model';
-import { useDispatch } from 'react-redux';
 import setCategories from './redux/actions/setCategories';
-import setMode from './redux/actions/setMode';
 
 export default function App() {
   const dispatch = useDispatch();

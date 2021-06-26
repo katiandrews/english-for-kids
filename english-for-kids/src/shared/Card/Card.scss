@@ -1,14 +1,43 @@
 .card {
+  position: relative;
   background-color: #fff;
   border-radius: 20px;
   cursor: pointer;
+  height: 260px;
+  transform-style: preserve-3d;
+  perspective: 2000px;
   box-shadow: -1px 2px 5px 1px rgba(92, 92, 92, 0.1);
-  transition: 400ms;
+  transition: 300ms ease-out;
 
   &:hover {
     box-shadow: -1px 2px 12px 8px rgba(92, 92, 92, 0.15);
     transform: translateY(-6px);
     transition: 400ms;
+  }
+
+  &.flipped {
+    transform: rotateY(180deg);
+    transition: 300ms ease-in;
+  }
+
+  & .card-front,
+  & .card-back {
+    position: absolute;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &.train-mode {
+      & .card-description {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  & .card-back {
+    transform: rotateY(180deg);
   }
 
   & .card-image {
