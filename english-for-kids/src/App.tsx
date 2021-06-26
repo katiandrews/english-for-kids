@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Header from './components/header/header';
-import Main from './components/Main/Main';
+import Main from './components/MainPage/MainPage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import Statistics from './components/Statistics/Statistics';
 import { ICategory } from './shared/models/category-model';
@@ -16,7 +16,7 @@ export default function App() {
       const { categories }: { categories: ICategory[] } = await resp.json();
       dispatch(setCategories(categories));
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

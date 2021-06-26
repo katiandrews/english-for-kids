@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import setCategory from '../../redux/actions/activeCategory';
 import Card from '../../shared/Card/Card';
 import { ICategory } from '../../shared/models/category-model';
-import './Main.scss';
+import './MainPage.scss';
 
 export default function Main() {
   const cards = useSelector(
@@ -20,7 +20,6 @@ export default function Main() {
     <>
       <h1 className='page-title'>Train & play</h1>
       <div className="categories">
-
         {
           cards.map((card) => (
             <Link to='/category' key={card.id}>
