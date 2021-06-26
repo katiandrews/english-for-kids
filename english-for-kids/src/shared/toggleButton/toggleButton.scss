@@ -10,6 +10,25 @@
   width: 0;
   height: 0;
   }
+
+  & .train-mode {
+  font-size: 24px;
+  color: rgb(119, 0, 255);
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  transition: .4s;
+}
+
+  & .play-mode {
+  opacity: 0;
+  font-size: 24px;
+  color: rgb(255, 0, 255);
+  position: absolute;
+  top: 3px;
+  left: 15px;
+  transition: .4s;
+}
 }
 
 .slider {
@@ -68,21 +87,3 @@ input:focus + .slider {
 }
 }
 
-.train-mode {
-  font-size: 24px;
-  color: rgb(119, 0, 255);
-  position: absolute;
-  right: 15px;
-  top: 3px;
-  transition: .4s;
-}
-
-.play-mode {
-  opacity: 0;
-  font-size: 24px;
-  color: rgb(255, 0, 255);
-  position: absolute;
-  top: 3px;
-  left: 15px;
-  transition: .4s;
-}

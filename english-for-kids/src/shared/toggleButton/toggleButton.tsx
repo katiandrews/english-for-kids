@@ -1,5 +1,3 @@
-import { useDispatch, useSelector } from 'react-redux';
-import setMode from '../../redux/actions/setMode';
 import './toggleButton.scss';
 
 export default function ToggleButton({ onClick }: { onClick: () => void }) {

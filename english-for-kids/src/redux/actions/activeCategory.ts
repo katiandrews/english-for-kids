@@ -1,6 +1,6 @@
 const setCategory = (index: number) => ({
   type: 'SET_CATEGORY',
-  payload: index
-})
+  payload: index,
+});
 
 export default setCategory;

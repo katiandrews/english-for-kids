@@ -4,17 +4,16 @@ import { ICategory } from '../../shared/models/category-model';
 import './CategoryPage.scss';
 
 export default function CategoryPage() {
-  const category =
-    useSelector(({ categories, activeCategory }: { categories: { items: ICategory[] }; activeCategory: number }) => {
-      return categories.items[activeCategory];
-    });
+  const category = useSelector((
+    { categories, activeCategory }: { categories: { items: ICategory[] }; activeCategory: number },
+  ) => categories.items[activeCategory]);
 
   const pronounceWord = (url: string) => {
     const audio = new Audio();
     audio.src = url;
     audio.currentTime = 0;
     audio.play();
-  }
+  };
 
   return (
     <>
