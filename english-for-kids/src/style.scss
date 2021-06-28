@@ -7,7 +7,20 @@ body {
   font-family: sans-serif;
 }
 
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  & .page-title {
+  margin: 0;
+  font-size: 40px;
+  color: rgb(63, 57, 63);
+}
+}
+
 .page-title {
+  margin-top: 0;
   font-size: 40px;
   color: rgb(63, 57, 63);
 }
@@ -16,4 +29,10 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 10%;
+  margin-bottom: 88px;
+}
+
+.visually-hidden {
+  visibility: hidden;
+  position: absolute;
 }

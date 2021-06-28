@@ -1,0 +1,29 @@
+.button {
+  width: fit-content;
+  padding: 8px 32px;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: rgb(255,72,90);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(252, 84, 101);
+  }
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+.icon-button {
+  padding-top: 0;
+
+  &::after {
+    content: url('https://image.flaticon.com/icons/png/24/3039/3039356.png');
+    position: relative;
+    left: 8px;
+    top: 4px;
+  }
+}

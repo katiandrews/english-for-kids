@@ -20,6 +20,15 @@
     transition: 300ms ease-in;
   }
 
+  & .disabled {
+    opacity: 0.5;
+    cursor: default;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+
   & .card-front,
   & .card-back {
     position: absolute;
