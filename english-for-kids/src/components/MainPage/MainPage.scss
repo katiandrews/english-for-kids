@@ -6,7 +6,6 @@
     justify-content: space-between;
     row-gap: 40px;
     column-gap: 40px;
-    margin-bottom: 88px;
 
     & a {
       width: calc(100% / 4 - 30px);
@@ -79,8 +78,7 @@
 @media (max-width: 640px) {
   .main {
     & .categories {
-      margin-bottom: 24px;
-
+      
       & a {
         width: 100%;
       }

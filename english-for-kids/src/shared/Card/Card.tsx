@@ -1,25 +1,29 @@
 import { Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { IWord } from '../models/WordCard';
 import './Card.scss';
 import FlipIcon from '../../assets/img/flip.svg';
 
-export default function Card({
-  name, imageUrl, cards, translation, word, wordImage, onClick,
-}: {
+interface IProps {
   name: string,
   imageUrl: string,
   cards: IWord[],
   translation: string,
   word: string,
   wordImage: string,
-  onClick: () => void
-}) {
-  const currentMode = useSelector(
+  onClick: () => boolean | void,
+}
+
+export default function Card({
+  name, imageUrl, cards, translation, word, wordImage, onClick,
+}: IProps) {
+  const isTrainMode = useSelector(
     ({ trainMode }: { trainMode: boolean }) => trainMode,
   );
+  const thisCard = useRef<HTMLDivElement>(null);
   const [flipped, setFlipState] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const flipCard = () => {
     setFlipState(!flipped);
@@ -29,8 +33,10 @@ export default function Card({
     setFlipState(false);
   };
 
-  const rightAnswerHandler = () => {
-
+  const clickHandler = () => {
+    if (onClick() === false) {
+      setDisabled(true);
+    }
   };
 
   return (
@@ -40,14 +46,15 @@ export default function Card({
           <div className="card-image" style={{ backgroundImage: `url('${imageUrl}')` }}></div>
           <div className="card-description">
             <h2 className="card-name">{name}</h2>
-            <span className={currentMode ? 'indicator train' : 'indicator play'}></span>
+            <span className={isTrainMode ? 'indicator train' : 'indicator play'}></span>
             <span className="cards-quantity">{cards.length} cards</span>
           </div>
         </div>
       </Route>
       <Route path='/category' exact >
-        <div className={currentMode ? 'card-front train-mode' : 'card-front play-mode'}
-          onClick={currentMode ? onClick : rightAnswerHandler}>
+        <div ref={thisCard}
+          className={`card-front ${isTrainMode ? 'train-mode' : 'play-mode'} ${disabled ? 'disabled' : ''}`}
+          onClick={!disabled ? clickHandler : () => { }}>
           <div className="card-image" style={{ backgroundImage: `url('${wordImage}')` }}></div>
           <div className="card-description">
             <h2 className="card-name">{word}</h2>
