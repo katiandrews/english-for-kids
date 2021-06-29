@@ -6,17 +6,18 @@ import './Card.scss';
 import FlipIcon from '../../assets/img/flip.svg';
 
 interface IProps {
-  name: string,
-  imageUrl: string,
-  cards: IWord[],
-  translation: string,
-  word: string,
-  wordImage: string,
+  classNames: string;
+  name: string;
+  imageUrl: string;
+  cards: IWord[];
+  translation: string;
+  word: string;
+  wordImage: string;
   onClick: () => boolean | void,
 }
 
 export default function Card({
-  name, imageUrl, cards, translation, word, wordImage, onClick,
+  classNames = '', name, imageUrl, cards, translation, word, wordImage, onClick,
 }: IProps) {
   const isTrainMode = useSelector(
     ({ trainMode }: { trainMode: boolean }) => trainMode,
@@ -53,7 +54,7 @@ export default function Card({
       </Route>
       <Route path='/category' exact >
         <div ref={thisCard}
-          className={`card-front ${isTrainMode ? 'train-mode' : 'play-mode'} ${disabled ? 'disabled' : ''}`}
+          className={`card-front ${isTrainMode ? 'train-mode' : 'play-mode'} ${classNames}`}
           onClick={!disabled ? clickHandler : () => { }}>
           <div className="card-image" style={{ backgroundImage: `url('${wordImage}')` }}></div>
           <div className="card-description">
