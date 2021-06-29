@@ -75,9 +75,9 @@ export default function CategoryPage() {
     setGameStarted(false);
     if (points.includes(false)) playAudio(failureSound);
     else playAudio(successSound);
-    // setTimeout(() => {
-    //   history.push('/');
-    // }, 4000);
+    setTimeout(() => {
+      history.push('/');
+    }, 4000);
   };
 
   const answerHandler = (answer: string, id: number) => {
@@ -101,7 +101,7 @@ export default function CategoryPage() {
 
   return (
     <>
-      <div className={`page-header ${gameEnded ? 'visually-hidden' : ''}`}>
+      <div className={`page-header ${gameEnded ? 'none' : ''}`}>
         <h1 className={'page-title'}>{category.name}</h1>
         <PointsScale />
         <Button classNames={isTrainMode || gameStarted ? 'visually-hidden' : ''}
@@ -109,7 +109,7 @@ export default function CategoryPage() {
         <Button classNames={gameStarted ? 'icon-button' : 'visually-hidden'}
           text='Repeat' onClick={() => playAudio(word.current)} />
       </div>
-      <div className={`category ${gameEnded ? 'visually-hidden' : ''}`}>
+      <div className={`category ${gameEnded ? 'none' : ''}`}>
         {
           category.cards.map((card, index) => (
             <Card key={index} {...category} {...card}
@@ -118,7 +118,7 @@ export default function CategoryPage() {
             />))
         }
       </div>
-      <div className={`end-game ${gameEnded ? '' : 'visually-hidden'}`}>
+      <div className={`end-game ${gameEnded ? '' : 'none'}`}>
         {<img src={points.includes(false) ? failureImg : successImg} alt="Game ended" className="game-ended" />}
       </div>
     </>
