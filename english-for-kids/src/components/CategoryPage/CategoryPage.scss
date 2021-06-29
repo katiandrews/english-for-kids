@@ -9,6 +9,10 @@
     min-width: calc(100% / 4 - 30px);
     margin: 0;
    }
+
+  &.none {
+    display: none;
+  }
   }
 
 .end-game {
@@ -20,10 +24,6 @@
     margin: 0 auto;
   }
 }
-
-.game-ended {
-    height: 0;
-  }
 
 @media (max-width: 1300px) {
   .category {

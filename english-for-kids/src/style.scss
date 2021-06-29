@@ -41,6 +41,10 @@ body {
   top: 0;
 }
 
+.none {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .page-header {
   margin-bottom: 16px;
