@@ -9,7 +9,10 @@ body {
 
 .page-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 32px;
 
   & .page-title {
@@ -35,4 +38,22 @@ body {
 .visually-hidden {
   visibility: hidden;
   position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 640px) {
+  .page-header {
+  margin-bottom: 16px;
+}
+
+  .page-title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .page-title {
+    font-size: 24px;
+  }
 }
