@@ -1,16 +1,25 @@
-import { } from 'react-redux';
-import star from '../../assets/img/star.svg';
-import emptyStar from '../../assets/img/empty-star.svg';
+import { useSelector } from 'react-redux';
+import Star from '../../assets/img/star.svg';
+import EmptyStar from '../../assets/img/empty-star.svg';
+import './PointsScale.scss';
 
 export default function PointsScale() {
-  // const currentPoints = useSelector(
-  //   ({ pointsScale }: { pointsScale: boolean[] }) => pointsScale,
-  // );
+  const currentPoints = useSelector(
+    ({ pointsScale }: { pointsScale: boolean[] }) => pointsScale,
+  );
+
+  const renderStars = () => {
+    const result: JSX.Element[] = [];
+    currentPoints.forEach((point, index) => {
+      if (point) result.push(<Star key={index} />);
+      else result.push(<EmptyStar key={index} />);
+    });
+    return result;
+  };
 
   return (
-    <div className="points">
-      {star}
-      {emptyStar}
+    <div className='points'>
+      {renderStars()}
     </div>
   );
 }
