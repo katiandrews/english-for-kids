@@ -34,14 +34,20 @@ export default function CategoryPage() {
   const history = useHistory();
 
   const categoryAudios = useRef<string[]>([]);
+  const [disabledCards, setDisabledCards] = useState<number[]>([]);
   const word = useRef('');
   const [gameStarted, setGameStarted] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
 
   useEffect(() => {
-    dispatch(setPoints([]));
+    const arr: string[] = [];
+    category.cards.map((card) => arr.push(card.audio));
+    categoryAudios.current = arr;
     setGameStarted(false);
+    setDisabledCards([])
+    dispatch(setPoints([]));
   }, [dispatch, category.cards]);
+
 
   function getRandomAudio() {
     const randomIndex = Math.floor(Math.random() * categoryAudios.current.length);
@@ -59,46 +65,43 @@ export default function CategoryPage() {
 
   useEffect(() => {
     if (gameStarted) {
-      const arr: string[] = [];
-      category.cards.map((card) => arr.push(card.audio));
-      categoryAudios.current = arr;
       word.current = getRandomAudio();
       playAudio(word.current);
     }
-  }, [gameStarted, category.cards]);
+  }, [gameStarted]);
 
   const endGame = () => {
     setGameEnded(true);
     setGameStarted(false);
     if (points.includes(false)) playAudio(failureSound);
     else playAudio(successSound);
-    setTimeout(() => {
-      history.push('/');
-    }, 4400);
+    // setTimeout(() => {
+    //   history.push('/');
+    // }, 4000);
   };
 
-  const answerHandler = (answer: string) => {
+  const answerHandler = (answer: string, id: number) => {
     if (gameStarted) {
       if (word.current === answer) {
         playAudio(correct);
         dispatch(setPoints([...points, true]));
+        setDisabledCards([...disabledCards, id])
         if (categoryAudios.current.length > 0) {
           word.current = getRandomAudio();
           setTimeout(() => { playAudio(word.current); }, 1500);
         } else {
           endGame();
         }
-        return false;
+      } else {
+        dispatch(setPoints([...points, false]));
+        playAudio(wrong);
       }
-      dispatch(setPoints([...points, false]));
-      playAudio(wrong);
     }
-    return true;
   };
 
   return (
     <>
-      <div className={gameEnded ? 'visually-hidden' : 'page-header'}>
+      <div className={`page-header ${gameEnded ? 'visually-hidden' : ''}`}>
         <h1 className={'page-title'}>{category.name}</h1>
         <PointsScale />
         <Button classNames={isTrainMode || gameStarted ? 'visually-hidden' : ''}
@@ -106,15 +109,16 @@ export default function CategoryPage() {
         <Button classNames={gameStarted ? 'icon-button' : 'visually-hidden'}
           text='Repeat' onClick={() => playAudio(word.current)} />
       </div>
-      <div className={gameEnded ? 'visually-hidden' : 'category'}>
+      <div className={`category ${gameEnded ? 'visually-hidden' : ''}`}>
         {
           category.cards.map((card, index) => (
             <Card key={index} {...category} {...card}
-              onClick={isTrainMode ? () => playAudio(card.audio) : () => answerHandler(card.audio)}
+              classNames={disabledCards.includes(index) ? 'disabled' : ''}
+              onClick={isTrainMode ? () => playAudio(card.audio) : () => answerHandler(card.audio, index)}
             />))
         }
       </div>
-      <div className={gameEnded ? 'end-game' : 'visually-hidden end-game'}>
+      <div className={`end-game ${gameEnded ? '' : 'visually-hidden'}`}>
         {<img src={points.includes(false) ? failureImg : successImg} alt="Game ended" className="game-ended" />}
       </div>
     </>

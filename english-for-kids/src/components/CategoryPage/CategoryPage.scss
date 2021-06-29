@@ -12,7 +12,7 @@
   }
 
 .end-game {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 
   & .game-ended {
@@ -20,6 +20,10 @@
     margin: 0 auto;
   }
 }
+
+.game-ended {
+    height: 0;
+  }
 
 @media (max-width: 1300px) {
   .category {
