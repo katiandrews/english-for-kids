@@ -1,0 +1,18 @@
+.table-wrap {
+  overflow-x: auto;
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #7033ff67;
+    color: white;
+
+    & thead {
+      background-color: #7033ff;
+    }
+
+    & td {
+      padding: 12px 16px;
+    }
+  }
+}

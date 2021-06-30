@@ -13,6 +13,7 @@ import successImg from '../../assets/img/game-success.png';
 import failureImg from '../../assets/img/failure.png';
 import successSound from '../../assets/audio/game-success.mp3';
 import failureSound from '../../assets/audio/game-failure.mp3';
+import { IWord } from '../../shared/models/WordCard';
 
 interface IStateProperties {
   categories: { items: ICategory[] };
@@ -80,12 +81,14 @@ export default function CategoryPage() {
     }, 4000);
   };
 
-  const answerHandler = (answer: string, id: number) => {
+  const answerHandler = (answer: IWord, id: number) => {
     if (gameStarted) {
-      if (word.current === answer) {
+      if (word.current === answer.audio) {
         playAudio(correct);
         dispatch(setPoints([...points, true]));
-        setDisabledCards([...disabledCards, id])
+        setDisabledCards([...disabledCards, id]);
+        const correctClicks = Number(localStorage.getItem(`${answer.word} correct`));
+        localStorage.setItem(`${answer.word} correct`, `${correctClicks + 1}`);
         if (categoryAudios.current.length > 0) {
           word.current = getRandomAudio();
           setTimeout(() => { playAudio(word.current); }, 1500);
@@ -93,18 +96,27 @@ export default function CategoryPage() {
           endGame();
         }
       } else {
+        const wrongClicks = Number(localStorage.getItem(`${answer.word} wrong`));
+        localStorage.setItem(`${answer.word} wrong`, `${wrongClicks + 1}`);
         dispatch(setPoints([...points, false]));
         playAudio(wrong);
       }
     }
   };
 
+  const trainModeClickHandler = (word: IWord) => {
+    playAudio(word.audio);
+    const clicks = Number(localStorage.getItem(`${word.word}`));
+    if (clicks) localStorage.setItem(`${word.word} clicks`, `${clicks + 1}`);
+    else localStorage.setItem(`${word.word} clicks`, '1');
+  }
+
   return (
     <>
       <div className={`page-header ${gameEnded ? 'none' : ''}`}>
         <h1 className={'page-title'}>{category.name}</h1>
         <PointsScale />
-        <Button classNames={isTrainMode || gameStarted ? 'visually-hidden' : ''}
+        <Button classNames={isTrainMode || gameStarted ? 'visually-hidden' : 'button-primary'}
           text='Start game' onClick={() => setGameStarted(true)} />
         <Button classNames={gameStarted ? 'icon-button' : 'visually-hidden'}
           text='Repeat' onClick={() => playAudio(word.current)} />
@@ -114,7 +126,7 @@ export default function CategoryPage() {
           category.cards.map((card, index) => (
             <Card key={index} {...category} {...card}
               classNames={disabledCards.includes(index) ? 'disabled' : ''}
-              onClick={isTrainMode ? () => playAudio(card.audio) : () => answerHandler(card.audio, index)}
+              onClick={isTrainMode ? () => trainModeClickHandler(card) : () => answerHandler(card, index)}
             />))
         }
       </div>

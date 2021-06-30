@@ -34,12 +34,6 @@ export default function Card({
     setFlipState(false);
   };
 
-  const clickHandler = () => {
-    if (onClick() === false) {
-      setDisabled(true);
-    }
-  };
-
   return (
     <div className={flipped ? 'card flipped' : 'card'} onMouseLeave={offCardHandler}>
       <Route path='/' exact >
@@ -55,7 +49,7 @@ export default function Card({
       <Route path='/category' exact >
         <div ref={thisCard}
           className={`card-front ${isTrainMode ? 'train-mode' : 'play-mode'} ${classNames}`}
-          onClick={!disabled ? clickHandler : () => { }}>
+          onClick={!disabled ? onClick : () => { }}>
           <div className="card-image" style={{ backgroundImage: `url('${wordImage}')` }}></div>
           <div className="card-description">
             <h2 className="card-name">{word}</h2>
