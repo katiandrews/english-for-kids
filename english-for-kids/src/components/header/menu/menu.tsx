@@ -36,7 +36,7 @@ export default function Menu() {
       <nav className={menuOpen ? 'main-nav active' : 'main-nav'} onClick={() => setMenuOpen(false)}>
         <ul className='nav-list' onClick={(e) => e.stopPropagation()}>
           <Link to='/'>
-            <li onClick={() => { onSelectCategory(MAIN_PAGE); }} ч
+            <li onClick={() => { onSelectCategory(MAIN_PAGE); }}
               className={activeItem === MAIN_PAGE ? 'nav-list-item active' : 'nav-list-item'}
             >Main page</li>
           </Link>

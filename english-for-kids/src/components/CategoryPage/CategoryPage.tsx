@@ -45,10 +45,9 @@ export default function CategoryPage() {
     category.cards.map((card) => arr.push(card.audio));
     categoryAudios.current = arr;
     setGameStarted(false);
-    setDisabledCards([])
+    setDisabledCards([]);
     dispatch(setPoints([]));
   }, [dispatch, category.cards]);
-
 
   function getRandomAudio() {
     const randomIndex = Math.floor(Math.random() * categoryAudios.current.length);
@@ -104,12 +103,12 @@ export default function CategoryPage() {
     }
   };
 
-  const trainModeClickHandler = (word: IWord) => {
-    playAudio(word.audio);
-    const clicks = Number(localStorage.getItem(`${word.word}`));
-    if (clicks) localStorage.setItem(`${word.word} clicks`, `${clicks + 1}`);
-    else localStorage.setItem(`${word.word} clicks`, '1');
-  }
+  const trainModeClickHandler = (card: IWord) => {
+    playAudio(card.audio);
+    const clicks = Number(localStorage.getItem(`${card.word}`));
+    if (clicks) localStorage.setItem(`${card.word} clicks`, `${clicks + 1}`);
+    else localStorage.setItem(`${card.word} clicks`, '1');
+  };
 
   return (
     <>
@@ -126,7 +125,8 @@ export default function CategoryPage() {
           category.cards.map((card, index) => (
             <Card key={index} {...category} {...card}
               classNames={disabledCards.includes(index) ? 'disabled' : ''}
-              onClick={isTrainMode ? () => trainModeClickHandler(card) : () => answerHandler(card, index)}
+              onClick={
+                isTrainMode ? () => trainModeClickHandler(card) : () => answerHandler(card, index)}
             />))
         }
       </div>

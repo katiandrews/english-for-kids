@@ -25,7 +25,8 @@ export default function Main() {
         {
           cards.map((card) => (
             <Link to='/category' key={card.id}>
-              <Card classNames='' key={card.id} {...card} {...card.cards[0]} onClick={() => onSelectCategory(card.id)} />
+              <Card classNames='' key={card.id} {...card} {...card.cards[0]}
+                onClick={() => onSelectCategory(card.id)} />
             </Link>
           ))
         }

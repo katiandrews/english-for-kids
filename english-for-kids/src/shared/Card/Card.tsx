@@ -24,7 +24,6 @@ export default function Card({
   );
   const thisCard = useRef<HTMLDivElement>(null);
   const [flipped, setFlipState] = useState(false);
-  const [disabled, setDisabled] = useState(false);
 
   const flipCard = () => {
     setFlipState(!flipped);
@@ -49,7 +48,7 @@ export default function Card({
       <Route path='/category' exact >
         <div ref={thisCard}
           className={`card-front ${isTrainMode ? 'train-mode' : 'play-mode'} ${classNames}`}
-          onClick={!disabled ? onClick : () => { }}>
+          onClick={classNames !== 'disabled' ? onClick : () => { }}>
           <div className="card-image" style={{ backgroundImage: `url('${wordImage}')` }}></div>
           <div className="card-description">
             <h2 className="card-name">{word}</h2>
