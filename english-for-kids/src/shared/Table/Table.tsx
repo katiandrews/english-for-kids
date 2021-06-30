@@ -1,4 +1,5 @@
 import { ICategory } from "../models/category-model";
+import { IWord } from "../models/WordCard";
 import './Table.scss';
 
 interface IProps {
@@ -7,6 +8,14 @@ interface IProps {
 }
 
 export default function Table({ thead, wordsData }: IProps) {
+
+  const calcPercOfCorrectClicks = (word: IWord) => {
+    const correctClicks = Number(localStorage.getItem(`${word.word} correct`));
+    const incorrectClicks = Number(localStorage.getItem(`${word.word} wrong`));
+    const percOfCorrectClicks = (correctClicks / (correctClicks + incorrectClicks)) * 100;
+    if (correctClicks || incorrectClicks) return Math.round(percOfCorrectClicks)
+  }
+
   return (
     <div className="table-wrap">
       <table className="table" >
@@ -24,6 +33,7 @@ export default function Table({ thead, wordsData }: IProps) {
                   <td>{localStorage.getItem(`${word.word} clicks`) || 0}</td>
                   <td>{localStorage.getItem(`${word.word} correct`) || 0}</td>
                   <td>{localStorage.getItem(`${word.word} wrong`) || 0}</td>
+                  <td>{calcPercOfCorrectClicks(word) || 0}</td>
                 </tr>
               ))
             ))
