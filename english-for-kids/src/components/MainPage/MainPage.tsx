@@ -18,7 +18,9 @@ export default function Main() {
 
   return (
     <>
-      <h1 className='page-title'>Train & play</h1>
+      <div className="page-header">
+        <h1 className='page-title'>Train & play</h1>
+      </div>
       <div className="categories">
         {
           cards.map((card) => (

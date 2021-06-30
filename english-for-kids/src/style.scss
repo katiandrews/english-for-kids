@@ -7,6 +7,11 @@ body {
   font-family: sans-serif;
 }
 
+.button-container {
+  display: flex;
+  gap: 16px;
+}
+
 .page-header {
   display: flex;
   flex-wrap: wrap;
@@ -14,16 +19,10 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 32px;
-
-  & .page-title {
-  margin: 0;
-  font-size: 40px;
-  color: rgb(63, 57, 63);
-}
 }
 
 .page-title {
-  margin-top: 0;
+  margin: 0;
   font-size: 40px;
   color: rgb(63, 57, 63);
 }
@@ -56,6 +55,18 @@ body {
 }
 
 @media (max-width: 400px) {
+  .page-header {
+    & .button-container {
+      align-items: flex-start;
+    }
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
   .page-title {
     font-size: 24px;
   }
