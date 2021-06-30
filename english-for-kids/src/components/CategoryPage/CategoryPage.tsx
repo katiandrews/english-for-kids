@@ -78,7 +78,7 @@ export default function CategoryPage() {
     else playAudio(successSound);
     setTimeout(() => {
       history.push('/');
-    }, 4000);
+    }, 2000);
   };
 
   const answerHandler = (answer: IWord, id: number) => {
