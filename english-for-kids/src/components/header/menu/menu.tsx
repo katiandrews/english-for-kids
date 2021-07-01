@@ -23,9 +23,7 @@ export default function Menu() {
   }));
 
   const onSelectCategory = (index: number) => {
-    if (index !== MAIN_PAGE) {
-      dispatch(setCategory(index));
-    }
+    dispatch(setCategory(index));
     setActiveItem(index);
     setMenuOpen(false);
   };
@@ -37,7 +35,7 @@ export default function Menu() {
         <ul className='nav-list' onClick={(e) => e.stopPropagation()}>
           <Link to='/'>
             <li onClick={() => { onSelectCategory(MAIN_PAGE); }}
-              className={activeItem === MAIN_PAGE ? 'nav-list-item active' : 'nav-list-item'}
+              className={currentCategory === MAIN_PAGE ? 'nav-list-item active' : 'nav-list-item'}
             >Main page</li>
           </Link>
           <Link to='/category'>
