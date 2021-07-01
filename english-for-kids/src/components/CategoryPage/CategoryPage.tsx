@@ -14,6 +14,8 @@ import failureImg from '../../assets/img/failure.png';
 import successSound from '../../assets/audio/game-success.mp3';
 import failureSound from '../../assets/audio/game-failure.mp3';
 import { IWord } from '../../shared/models/WordCard';
+import MAIN_PAGE from '../../shared/constants';
+import setCategory from '../../redux/actions/activeCategory';
 
 interface IStateProperties {
   categories: { items: ICategory[] };
@@ -33,6 +35,7 @@ export default function CategoryPage() {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
 
   const categoryAudios = useRef<string[]>([]);
   const [disabledCards, setDisabledCards] = useState<number[]>([]);

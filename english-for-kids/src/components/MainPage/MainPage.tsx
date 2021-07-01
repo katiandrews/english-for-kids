@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import setCategory from '../../redux/actions/activeCategory';
 import Card from '../../shared/Card/Card';
+import MAIN_PAGE from '../../shared/constants';
 import { ICategory } from '../../shared/models/category-model';
 import './MainPage.scss';
 
@@ -11,6 +13,10 @@ export default function Main() {
   );
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCategory(MAIN_PAGE));
+  }, [])
 
   const onSelectCategory = (index: number) => {
     dispatch(setCategory(index));
