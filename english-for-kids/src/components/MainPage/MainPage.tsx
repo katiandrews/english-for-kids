@@ -16,7 +16,7 @@ export default function Main() {
 
   useEffect(() => {
     dispatch(setCategory(MAIN_PAGE));
-  }, [])
+  }, [dispatch]);
 
   const onSelectCategory = (index: number) => {
     dispatch(setCategory(index));

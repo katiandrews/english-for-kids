@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Header from './components/header/header';
 import Main from './components/MainPage/MainPage';
@@ -10,7 +10,6 @@ import setCategories from './redux/actions/setCategories';
 
 export default function App() {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     fetch('./db.json').then(async (resp) => {
