@@ -14,7 +14,6 @@ interface IStateProperties {
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState<number>(MAIN_PAGE);
 
   const dispatch = useDispatch();
   const { cards, currentCategory } = useSelector(({ categories, activeCategory }: IStateProperties) => ({
@@ -24,7 +23,6 @@ export default function Menu() {
 
   const onSelectCategory = (index: number) => {
     dispatch(setCategory(index));
-    setActiveItem(index);
     setMenuOpen(false);
   };
 
