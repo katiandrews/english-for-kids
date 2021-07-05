@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Header from './components/header/header';
 import Main from './components/MainPage/MainPage';
+import Footer from './components/Footer/Footer';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import Statistics from './components/Statistics/Statistics';
 import { ICategory } from './shared/models/category-model';
@@ -26,6 +27,7 @@ export default function App() {
         <Route path='/category' component={CategoryPage} exact />
         <Route path='/statistics' component={Statistics} exact />
       </main>
+      <Footer />
     </>
   );
 }
