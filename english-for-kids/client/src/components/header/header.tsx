@@ -6,7 +6,11 @@ import ToggleButton from '../../shared/toggleButton/toggleButton';
 import setMode from '../../redux/actions/setMode';
 import Button from '../../shared/Button/button';
 
-export default function Header() {
+interface IProps {
+  onLoginClick: () => void;
+}
+
+export default function Header({ onLoginClick }: IProps) {
   const dispatch = useDispatch();
   const currentMode = useSelector(
     ({ trainMode }: { trainMode: boolean }) => trainMode,
@@ -25,6 +29,7 @@ export default function Header() {
     <header className='main-header'>
       <Menu />
       <div className="button-container">
+        <Button classNames='button-primary' text='Login' onClick={onLoginClick}></Button>
         <Button classNames='button-secondary' text={'Statistics'} onClick={openStatisticsPage} />
         <ToggleButton onClick={changeModeOnToggle} />
       </div>
