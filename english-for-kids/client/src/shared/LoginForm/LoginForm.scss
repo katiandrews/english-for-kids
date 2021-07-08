@@ -21,7 +21,12 @@
   & .form-content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    margin-top: 8px;
+    gap: 16px;
+
+    & input {
+      width: 100%;
+    }
   }
 }
 
