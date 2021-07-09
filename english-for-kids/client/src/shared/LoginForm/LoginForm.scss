@@ -16,6 +16,11 @@
   background-color: #fff;
   border-radius: 12px;
   border: 2px solid blue;
+
+  & .form-error {
+      color: red;
+      margin: 8px 0 0 0;
+    }
 }
 
   & .form-content {

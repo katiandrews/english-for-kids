@@ -1,8 +1,8 @@
 import express from 'express';
 import config from 'config';
+import cors from 'cors';
 import log from './logger/index';
 import connect from './db/connect';
-import cors from 'cors';
 
 const PORT = config.get('port');
 
@@ -17,4 +17,3 @@ app.listen(PORT, () => {
   log.info(`server listing on port ${PORT}`);
   connect();
 });
-

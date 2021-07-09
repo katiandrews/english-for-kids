@@ -23,6 +23,7 @@
     "plugin:import/warnings",
     "plugin:import/typescript"
   ],
+  "root": true,
   "rules": {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
