@@ -4,21 +4,25 @@ import AuthContext from '../../context/AuthContext';
 import CategoryCard from './CategoryCard';
 import { ICategory } from '../../shared/models/category-model';
 import './AdminPage.scss';
+import useHttp from '../../hooks/http.hook';
 
 export default function AdminPanel() {
   let cards = useSelector(
     ({ categories }: { categories: { items: ICategory[] } }) => categories.items,
   );
-
   const auth = useContext(AuthContext);
+  const { request } = useHttp();
 
   useEffect(() => {
-
   }, [cards])
 
   const logoutHandler = () => {
     auth.logout();
   };
+
+  const deleteCategory = (id: string) => {
+    request(`categories/${id}`, 'DELETE');
+  }
 
   return (
     <>
@@ -34,7 +38,7 @@ export default function AdminPanel() {
         <div className="admin-categories">
           {
             cards.map((card, index) => (
-              <CategoryCard classNames='' key={index} {...card} {...card.cards[0]} onClick={() => { }} />
+              <CategoryCard classNames='' key={index} {...card} {...card.cards[0]} onClick={() => { deleteCategory(card._id) }} />
             ))
           }
         </div>

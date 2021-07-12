@@ -21,7 +21,7 @@ export default function App() {
     request('categories', 'GET').then((categories) => {
       dispatch(setCategories(categories));
     })
-  }, [dispatch]);
+  }, [request]);
 
   const [formState, setFormState] = useState(false);
   const {

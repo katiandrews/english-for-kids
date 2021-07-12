@@ -16,9 +16,14 @@ router.get('/:id', async (req, res) => {
   try {
     const category = await Category.findById(req.params.id)
     res.json(category);
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 }) 
+
+router.delete('/:id', async(req, res) => {
+  try {
+    const category = await Category.deleteOne({_id: req.params.id})
+    res.json(category);
+  } catch (error) {}
+})
 
 module.exports = router;
