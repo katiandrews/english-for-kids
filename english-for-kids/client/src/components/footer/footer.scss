@@ -1,0 +1,22 @@
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 16px 10%;
+  width: 100%;
+  background-color: rgb(128, 63, 214);
+  color: #fff;
+  font-size: 20px;
+  
+  & a {
+    color: #fff;
+
+    &:hover {
+      color:rgb(229, 210, 255)
+    }
+  }
+  & .rs-logo {
+    width: 100px;
+  }
+}

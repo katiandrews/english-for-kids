@@ -1,0 +1,43 @@
+.admin-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 40px;
+    column-gap: 40px;
+
+  & .card {
+    width: calc(100% / 4 - 30px);
+    margin: 0;
+  }
+}
+
+@media (max-width: 1300px) {
+  .admin-categories {
+    row-gap: 40px;
+    column-gap: 24px;
+
+    & .card {
+      width: calc(100% / 3 - 20px);
+    }
+  }
+}
+
+@media (max-width: 990px) {
+    .admin-categories {
+      row-gap: 24px;
+      column-gap: 16px;
+
+      & .card {
+        width: calc(100% / 2 - 20px);
+      }
+    }
+  
+}
+
+@media (max-width: 640px) {
+  .admin-categories {
+      & .card {
+        width: 100%;
+      }
+    }
+}

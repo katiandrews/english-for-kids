@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Header from './components/header/header';
 import Main from './Pages/MainPage/MainPage';
+import Footer from './components/footer/footer';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
 import Statistics from './Pages/Statistics/Statistics';
 import setCategories from './redux/actions/setCategories';
@@ -47,6 +48,7 @@ export default function App() {
       }}>
         <Route path='/adminPanel' component={AdminPanel} exact />
         <Redirect to='/adminPanel' />
+        <Footer />
       </AuthContext.Provider >
     );
   }
@@ -63,6 +65,7 @@ export default function App() {
           <Redirect to='/' />
         </Switch>
       </main>
+      <Footer />
       <LoginForm classNames={formState ? '' : 'visually-hidden'} close={closeLoginForm} />
     </AuthContext.Provider >
   );
