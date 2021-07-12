@@ -29,10 +29,10 @@ export default function Main() {
       </div>
       <div className="categories">
         {
-          cards.map((card) => (
-            <Link to='/category' key={card.id}>
-              <Card classNames='' key={card.id} {...card} {...card.cards[0]}
-                onClick={() => onSelectCategory(card.id)} />
+          cards.map((card, index) => (
+            <Link to='/category' key={index}>
+              <Card classNames='' key={index} {...card} {...card.cards[0]}
+                onClick={() => onSelectCategory(index)} />
             </Link>
           ))
         }

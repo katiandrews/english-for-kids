@@ -1,7 +1,7 @@
 import { IWord } from './WordCard';
 
 export interface ICategory {
-  id: number;
+  _id: string;
   name: string;
   imageUrl: string;
   cards: IWord[];

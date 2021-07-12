@@ -42,7 +42,7 @@ export default function CategoryPage() {
 
   useEffect(() => {
     const arr: string[] = [];
-    category.cards.map((card) => arr.push(card.audio));
+    category.cards.map((card: { audio: string; }) => arr.push(card.audio));
     categoryAudios.current = arr;
     setGameStarted(false);
     setDisabledCards([]);
@@ -125,7 +125,7 @@ export default function CategoryPage() {
           category.cards.map((card, index) => (
             <Card key={index} {...category} {...card}
               classNames={disabledCards.includes(index) ? 'disabled' : ''}
-              onClick={ isTrainMode ? () => trainModeClickHandler(card) : () => answerHandler(card, index)}
+              onClick={isTrainMode ? () => trainModeClickHandler(card) : () => answerHandler(card, index)}
             />))
         }
       </div>

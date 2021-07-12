@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', require('./routes/auth.routes'));
+app.use('/api/categories', require('./routes/categories.routes'));
 
 app.listen(PORT, () => {
   log.info(`server listing on port ${PORT}`);

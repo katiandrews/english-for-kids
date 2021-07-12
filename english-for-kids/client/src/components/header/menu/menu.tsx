@@ -42,7 +42,7 @@ export default function Menu() {
                 <li
                   onClick={() => onSelectCategory(index)}
                   className={currentCategory === index ? 'nav-list-item active' : 'nav-list-item'}
-                  key={`${card}_${index}`}>{card.name}
+                  key={index}>{card.name}
                 </li>
               ))}
           </Link>

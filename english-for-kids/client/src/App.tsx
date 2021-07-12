@@ -2,24 +2,24 @@ import { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Header from './components/header/header';
-import Main from './components/MainPage/MainPage';
-import CategoryPage from './components/CategoryPage/CategoryPage';
-import Statistics from './components/Statistics/Statistics';
-import { ICategory } from './shared/models/category-model';
+import Main from './Pages/MainPage/MainPage';
+import CategoryPage from './Pages/CategoryPage/CategoryPage';
+import Statistics from './Pages/Statistics/Statistics';
 import setCategories from './redux/actions/setCategories';
-import AdminPanel from './components/AdminPanel/AdminPanel';
-import LoginForm from './shared/LoginForm/LoginForm';
+import AdminPanel from './Pages/AdminPage/AdminPage';
+import LoginForm from './components/LoginForm/LoginForm';
 import useAuth from './hooks/auth.hook';
 import AuthContext from './context/AuthContext';
+import useHttp from './hooks/http.hook';
 
 export default function App() {
   const dispatch = useDispatch();
+  const { request } = useHttp();
 
   useEffect(() => {
-    fetch('./db.json').then(async (resp) => {
-      const { categories }: { categories: ICategory[] } = await resp.json();
+    request('categories', 'GET').then((categories) => {
       dispatch(setCategories(categories));
-    });
+    })
   }, [dispatch]);
 
   const [formState, setFormState] = useState(false);

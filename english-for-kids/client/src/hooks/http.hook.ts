@@ -8,9 +8,12 @@ const useHttp = () => {
   const request = useCallback(async (url: string, method = 'GET', reqBody = null, reqHeaders = {}) => {
     setLoading(true);
     try {
-      const body = JSON.stringify(reqBody);
+      let body = reqBody;
       const headers = reqHeaders;
-      headers['Content-Type'] = 'application/json';
+      if (reqBody) {
+        body = JSON.stringify(reqBody);
+        headers['Content-Type'] = 'application/json';
+      }
 
       const response = await fetch(`${base}/${url}`, { method, body, headers });
       const data = await response.json();

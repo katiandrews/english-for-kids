@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Button from '../../shared/Button/button';
 import { ICategory } from '../../shared/models/category-model';
-import Table from '../../shared/Table/Table';
+import Table from '../../components/Table/Table';
 import './Statistics.scss';
 
 const tableColumns = ['Category', 'Word', 'Translation', 'Trained', 'Correct', 'Incorrect', '% Correct'];

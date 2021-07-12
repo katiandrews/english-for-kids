@@ -10,8 +10,10 @@ module.exports = router;
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: 'There is no such user' });
+    
     const isPasswordMatch = password === user.password;
     if (!isPasswordMatch) return res.status(400).json({ message: 'Incorrect password' });
 

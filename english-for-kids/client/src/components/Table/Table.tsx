@@ -1,5 +1,5 @@
-import { ICategory } from '../models/category-model';
-import { IWord } from '../models/WordCard';
+import { ICategory } from '../../shared/models/category-model';
+import { IWord } from '../../shared/models/WordCard';
 import './Table.scss';
 
 interface IProps {
