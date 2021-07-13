@@ -19,6 +19,18 @@ router.get('/:id', async (req, res) => {
   } catch (error) {}
 }) 
 
+router.post('/', async (req, res) => {
+  try {
+    const newCard = new Category({
+      name: req.body.name, 
+      imageUrl: req.body.imageUrl,
+      cards: []
+    });
+    await newCard.save();
+    res.status(201).json({ newCard });
+  } catch (error) {}
+})
+
 router.put('/:id', async(req, res) => {
   try {
     const updatedCategory = await Category.findByIdAndUpdate(req.params.id, req.body, { useFindAndModify: false })

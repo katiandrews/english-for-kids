@@ -1,5 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
 import CategoryCard from './CategoryCard';
 import { ICategory } from '../../shared/models/category-model';
@@ -11,7 +12,7 @@ import CardControl from '../../components/cardControl/cardControl';
 export default function AdminPanel() {
   const dispatch = useDispatch();
 
-  let cards = useSelector(
+  const cards = useSelector(
     ({ categories }: { categories: { items: ICategory[] } }) => categories.items,
   );
   const auth = useContext(AuthContext);
@@ -23,15 +24,24 @@ export default function AdminPanel() {
 
   const deleteCategory = async (id: string) => {
     await request(`categories/${id}`, 'DELETE');
-    const deleted = cards.findIndex(element => element._id === id);
+    const deleted = cards.findIndex((element) => element._id === id);
     cards.splice(deleted, 1);
     dispatch(setCategories([...cards]));
-  }
+  };
 
   return (
     <>
       <header className="main-header">
-        <h1>admin page</h1>
+        <ul className="pages">
+          <Route path='/adminPanel'>
+            <li className='active-page'>Categories</li>
+            <li>Words</li>
+          </Route>
+          <Route path='/category/words'>
+            <li>Categories</li>
+            <li className='active-page'>Words</li>
+          </Route>
+        </ul>
         <button
           className='button button-primary'
           onClick={logoutHandler}>
@@ -43,7 +53,8 @@ export default function AdminPanel() {
           <CardControl />
           {
             cards.map((card, index) => (
-              <CategoryCard classNames='' key={index + 1} {...card} {...card.cards[0]} onClick={() => { deleteCategory(card._id) }} />
+              <CategoryCard classNames='' key={index + 1} {...card}
+                {...card.cards[0]} onClick={() => { deleteCategory(card._id); }} />
             ))
           }
         </div>

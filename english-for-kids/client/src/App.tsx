@@ -20,8 +20,8 @@ export default function App() {
   useEffect(() => {
     request('categories', 'GET').then((categories) => {
       dispatch(setCategories(categories));
-    })
-  }, [request]);
+    });
+  }, [request, dispatch]);
 
   const [formState, setFormState] = useState(false);
   const {

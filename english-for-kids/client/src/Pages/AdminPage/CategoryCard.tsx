@@ -1,11 +1,11 @@
-import Button from "../../shared/Button/button";
-import { IWord } from "../../shared/models/WordCard";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Button from '../../shared/Button/button';
+import { IWord } from '../../shared/models/WordCard';
 import DeleteIcon from '../../assets/img/delete.svg';
-import { useEffect, useState } from "react";
-import useHttp from "../../hooks/http.hook";
-import { useDispatch, useSelector } from "react-redux";
-import { ICategory } from "../../shared/models/category-model";
-import setCategories from "../../redux/actions/setCategories";
+import useHttp from '../../hooks/http.hook';
+import { ICategory } from '../../shared/models/category-model';
+import setCategories from '../../redux/actions/setCategories';
 
 interface IProps {
   classNames: string;
@@ -17,10 +17,10 @@ interface IProps {
 }
 
 export default function CategoryCard({
-  classNames = '', name, imageUrl, _id, cards, onClick,
+  name, imageUrl, _id, cards, onClick,
 }: IProps) {
   const dispatch = useDispatch();
-  let categoriesCards = useSelector(
+  const categoriesCards = useSelector(
     ({ categories }: { categories: { items: ICategory[] } }) => categories.items,
   );
   const { request } = useHttp();
@@ -29,37 +29,35 @@ export default function CategoryCard({
   const [categoryInfo, setInfo] = useState({ name: '', imageUrl: '' });
 
   useEffect(() => {
-    setInfo({ name: name, imageUrl: imageUrl });
-  }, [categoriesCards, edit])
+    setInfo({ name, imageUrl });
+  }, [edit, name, imageUrl]);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInfo({ ...categoryInfo, [event.target.name]: event.target.value });
-  }
+  };
 
   const changeFileHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = await new Promise((resolve) => {
-      const files = event.target.files;
+      const { files } = event.target;
       const reader = new FileReader();
       reader.onload = (fileLoadedEvent) => {
         const srcData = fileLoadedEvent.target?.result;
-        if (srcData)
-          resolve(srcData);
+        if (srcData) { resolve(srcData); }
       };
       if (files && files.length > 0) {
         reader.readAsDataURL(files[0]);
       }
     });
     setInfo({ ...categoryInfo, [event.target.name]: url });
-  }
+  };
 
   const updateCategory = async () => {
     await request(`categories/${_id}`, 'PUT', categoryInfo);
-    const categoryIndex = categoriesCards.findIndex(element => element._id === _id);
+    const categoryIndex = categoriesCards.findIndex((element) => element._id === _id);
     categoriesCards[categoryIndex] = { ...categoriesCards[categoryIndex], ...categoryInfo };
     dispatch(setCategories([...categoriesCards]));
     setEdit(false);
-  }
-
+  };
 
   if (edit) {
     return (
@@ -90,7 +88,7 @@ export default function CategoryCard({
             text='Cancel' onClick={() => setEdit(false)} />
         </div>
       </div>
-    )
+    );
   }
   return (
     <div className='card'>
@@ -107,5 +105,5 @@ export default function CategoryCard({
           text='Add word' onClick={() => { }} />
       </div>
     </div>
-  )
+  );
 }

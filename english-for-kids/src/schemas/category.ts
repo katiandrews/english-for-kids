@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 const CategorySchema = new Schema(
   {
   name: { type: String, required: true, unique: true },
-  image: { type: String },
+  imageUrl: { type: String },
   cards: { type: Array },
 }
 );
