@@ -45,6 +45,18 @@
   }
 }
 
+.button-warning {
+  background-color: none;
+  color: #e02929;
+  border: 1px solid #e02929;
+  transition: all 400ms;
+
+   &:hover {
+    background-color: #e02929;
+    color: #fff;
+  }
+}
+
 @media (max-width: 460px) {
   .button {
     width: 100%;

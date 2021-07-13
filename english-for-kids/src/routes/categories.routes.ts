@@ -19,11 +19,23 @@ router.get('/:id', async (req, res) => {
   } catch (error) {}
 }) 
 
+router.put('/:id', async(req, res) => {
+  try {
+    const updatedCategory = await Category.findByIdAndUpdate(req.params.id, req.body, { useFindAndModify: false })
+    res.json(updatedCategory);
+  } catch (error) {
+    res.status(500).send({
+        message: "Error updating Tutorial with id=" + req.params.id
+      });
+  }
+})
+
 router.delete('/:id', async(req, res) => {
   try {
     const category = await Category.deleteOne({_id: req.params.id})
     res.json(category);
-  } catch (error) {}
+  } catch (error) {
+  }
 })
 
 module.exports = router;
