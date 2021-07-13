@@ -4,12 +4,12 @@ export default function CardControl() {
   return (
     <div className='card'>
       <div className="card-image" style={{ backgroundImage: `url('')` }}>
-        <label htmlFor="image" className='fileinput'>
+        <label htmlFor="imageInput" className='fileinput'>
           Upload image
           <input
             type="file"
             name='imageUrl'
-            id='image'
+            id='imageInput'
           />
         </label>
       </div>

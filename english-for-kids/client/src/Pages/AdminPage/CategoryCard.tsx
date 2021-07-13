@@ -6,7 +6,6 @@ import useHttp from "../../hooks/http.hook";
 import { useDispatch, useSelector } from "react-redux";
 import { ICategory } from "../../shared/models/category-model";
 import setCategories from "../../redux/actions/setCategories";
-import { url } from "inspector";
 
 interface IProps {
   classNames: string;

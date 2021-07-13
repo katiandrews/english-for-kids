@@ -43,7 +43,7 @@ export default function AdminPanel() {
           <CardControl />
           {
             cards.map((card, index) => (
-              <CategoryCard classNames='' key={index} {...card} {...card.cards[0]} onClick={() => { deleteCategory(card._id) }} />
+              <CategoryCard classNames='' key={index + 1} {...card} {...card.cards[0]} onClick={() => { deleteCategory(card._id) }} />
             ))
           }
         </div>
