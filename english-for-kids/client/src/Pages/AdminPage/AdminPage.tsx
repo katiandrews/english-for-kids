@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Route, useHistory } from 'react-router-dom';
-import AuthContext from '../../context/AuthContext';
+import { useHistory } from 'react-router-dom';
 import CategoryCard from './CategoryCard';
 import { ICategory } from '../../shared/models/category-model';
 import './AdminPage.scss';
@@ -24,12 +22,7 @@ export default function AdminPanel() {
       cards: categories.items,
     }));
 
-  const auth = useContext(AuthContext);
   const { request } = useHttp();
-
-  const logoutHandler = () => {
-    auth.logout();
-  };
 
   const deleteCategory = async (id: string) => {
     await request(`categories/${id}`, 'DELETE');
@@ -41,7 +34,7 @@ export default function AdminPanel() {
   const openWordsPage = async (index: number, name: string) => {
     dispatch(setCategory(index));
     history.push(`${name}/words`);
-  }
+  };
 
   return (
     <>

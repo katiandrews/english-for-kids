@@ -36,7 +36,9 @@ export default function LoginForm({ classNames, close }: IProps) {
     try {
       const data = await request('login', 'POST', { ...form });
       auth.login(data.token, data.userId);
-    } catch (error) { setError({ display: true, message: error.message }); }
+    } catch (error) {
+      setError({ display: true, message: error.message });
+    }
   };
 
   return (

@@ -1,13 +1,7 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useHttp from '../../hooks/http.hook';
-import setCategories from '../../redux/actions/setCategories';
 import Button from '../../shared/Button/button';
-import { ICategory } from '../../shared/models/category-model';
 
 export default function WordControl() {
-  const dispatch = useDispatch();
-  const { request } = useHttp();
   const [wordInfo, setInfo] = useState({ word: '', wordImage: '', translation: '' });
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,39 +32,22 @@ export default function WordControl() {
       <div className="card-image" style={{ backgroundImage: `url('${wordInfo.wordImage}')` }}>
         <label htmlFor="imageInput" className='fileinput'>
           Upload image
-          <input
-            type='file'
-            name='imageUrl'
-            id='imageInput'
-            onChange={changeFileHandler}
-          />
+          <input type='file' name='imageUrl' id='imageInput' onChange={changeFileHandler} />
         </label>
       </div>
       <div className="card-description">
         <label htmlFor="word">
           Word <br />
-          <input
-            type="text"
-            name="word"
-            value={wordInfo.word}
-            onChange={changeHandler}
-          />
+          <input type="text" name="word" value={wordInfo.word} onChange={changeHandler} />
         </label>
         <label htmlFor="translation">
           Translation <br />
-          <input
-            type="text"
-            name="translation"
-            value={wordInfo.translation}
-            onChange={changeHandler}
-          />
+          <input type="text" name="translation" value={wordInfo.translation} onChange={changeHandler} />
         </label>
       </div>
       <div className="buttons">
-        <Button classNames='button-secondary'
-          text='Add word' onClick={() => { }} />
-        <Button classNames='button-warning'
-          text='Clear' onClick={clearInputs} />
+        <Button classNames='button-secondary' text='Add word' onClick={() => { }} />
+        <Button classNames='button-warning' text='Clear' onClick={clearInputs} />
       </div>
     </div>
   );

@@ -7,9 +7,17 @@
   font-size: 24px;
 
   & .active-page {
-    cursor: pointer;
-    text-decoration: underline;
+    color: blue;
+    border-bottom: 2px solid blue;
   }
+
+  & .categories-link {
+      cursor: pointer;
+      
+      &:hover {
+        border-bottom: 2px solid blue;
+      }
+    }
 }
 
 @media (max-width: 640px) {

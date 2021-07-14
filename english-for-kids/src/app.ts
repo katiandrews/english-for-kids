@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 app.use('/api', require('./routes/auth.routes'));
 app.use('/api/categories', require('./routes/categories.routes'));
+app.use('/api/words', require('./routes/words.routes'));
 
 app.listen(PORT, () => {
   log.info(`server listing on port ${PORT}`);

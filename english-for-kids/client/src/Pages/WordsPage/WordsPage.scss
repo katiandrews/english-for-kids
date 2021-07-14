@@ -50,6 +50,20 @@
 
     & .card-description {
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      & .audio-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+
+        &:hover {
+          color:rgb(255, 130, 150);
+        }
+      }
     }
 
     & .buttons {

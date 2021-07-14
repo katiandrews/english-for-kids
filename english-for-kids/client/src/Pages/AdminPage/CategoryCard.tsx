@@ -18,7 +18,7 @@ interface IProps {
 }
 
 export default function CategoryCard({
-  name, imageUrl, _id, cards, onDelete, Click
+  name, imageUrl, _id, cards, onDelete, Click,
 }: IProps) {
   const dispatch = useDispatch();
   const categoriesCards = useSelector(
@@ -63,12 +63,12 @@ export default function CategoryCard({
   const changeToEditMode = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setEdit(true);
-  }
+  };
 
   const deleteCard = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     onDelete();
-  }
+  };
 
   if (edit) {
     return (
