@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/header/header';
 import Main from './Pages/MainPage/MainPage';
 import Footer from './components/footer/footer';
@@ -12,10 +12,19 @@ import LoginForm from './components/LoginForm/LoginForm';
 import useAuth from './hooks/auth.hook';
 import AuthContext from './context/AuthContext';
 import useHttp from './hooks/http.hook';
+import { ICategory } from './shared/models/category-model';
+import WordsPage from './Pages/WordsPage/WordsPage';
+import AdminHeader from './components/AdminHeader/AdminHeader';
+
+interface IStateProperties {
+  categories: { items: ICategory[] };
+}
 
 export default function App() {
   const dispatch = useDispatch();
   const { request } = useHttp();
+
+  const categoriesCards = useSelector(({ categories }: IStateProperties) => categories.items);
 
   useEffect(() => {
     request('categories', 'GET').then((categories) => {
@@ -46,8 +55,18 @@ export default function App() {
       <AuthContext.Provider value={{
         token, login, logout, userId, isAuthenticated,
       }}>
-        <Route path='/adminPanel' component={AdminPanel} exact />
-        <Redirect to='/adminPanel' />
+        <AdminHeader />
+        <main className="main">
+          <Switch>
+            <Route path='/adminPanel' component={AdminPanel} exact />
+            {
+              categoriesCards.map((category, index) => (
+                <Route path={`/${category.name}/words`} component={WordsPage} key={index} />
+              ))
+            }
+            <Redirect to='/adminPanel' />
+          </Switch>
+        </main>
         <Footer />
       </AuthContext.Provider >
     );

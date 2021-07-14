@@ -1,0 +1,20 @@
+.pages {
+  display: flex;
+  gap: 24px;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  font-size: 24px;
+
+  & .active-page {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 640px) {
+  .pages {
+    font-size: 16px;
+    gap: 8px;
+  }
+}

@@ -13,11 +13,12 @@ interface IProps {
   imageUrl: string;
   _id: string;
   cards: IWord[];
-  onClick: () => boolean | void,
+  onDelete: () => void;
+  onClick: () => void;
 }
 
 export default function CategoryCard({
-  name, imageUrl, _id, cards, onClick,
+  name, imageUrl, _id, cards, onDelete, onClick
 }: IProps) {
   const dispatch = useDispatch();
   const categoriesCards = useSelector(
@@ -91,8 +92,8 @@ export default function CategoryCard({
     );
   }
   return (
-    <div className='card'>
-      <DeleteIcon onClick={onClick} className='delete-icon' />
+    <div className='card' onClick={onClick}>
+      <DeleteIcon onClick={onDelete} className='delete-icon' />
       <div className="card-image" style={{ backgroundImage: `url('${imageUrl}')` }}></div>
       <div className="card-description">
         <h2 className="card-name">{name}</h2>

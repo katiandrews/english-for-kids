@@ -1,11 +1,11 @@
-.admin-categories {
-    display: flex;
+.words-page {
+  display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: 40px;
     column-gap: 40px;
 
-  & .card {
+    & .card {
     width: calc(100% / 4 - 30px);
     margin: 0;
     height: auto;
@@ -16,36 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-      & .fileinput {
-      display: block;
-      width: 50%;
-      height: 50%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 24px;
-      border-radius: 50%;
-      border: 2px solid blue;
-      cursor: pointer;
-
-      & input {
-        display: none;
-      }
     }
-    }
-    
-    & .buttons {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-
-      & .button {
-        padding: 8px;
-      }
-    }
-
     & .delete-icon {
       padding: 5px;
       position: absolute;
@@ -62,7 +33,7 @@
 }
 
 @media (max-width: 1300px) {
-  .admin-categories {
+  .words-page {
     row-gap: 40px;
     column-gap: 24px;
 
@@ -73,7 +44,7 @@
 }
 
 @media (max-width: 990px) {
-    .admin-categories {
+    .words-page {
       row-gap: 24px;
       column-gap: 16px;
 
@@ -84,12 +55,7 @@
 }
 
 @media (max-width: 640px) {
-  .pages {
-    font-size: 16px;
-    gap: 8px;
-  }
-
-  .admin-categories {
+  .words-page {
       & .card {
         width: 100%;
       }
