@@ -24,8 +24,9 @@ export default function AdminPanel() {
 
   const { request } = useHttp();
 
-  const deleteCategory = async (id: string) => {
+  const deleteCategory = async (id: string, category: string) => {
     await request(`categories/${id}`, 'DELETE');
+    await request(`words/?category=${category}`, 'DELETE');
     const deleted = cards.findIndex((element) => element._id === id);
     cards.splice(deleted, 1);
     dispatch(setCategories([...cards]));
@@ -43,7 +44,7 @@ export default function AdminPanel() {
         {
           cards.map((card, index) => (
             <CategoryCard classNames='' key={index + 1} {...card}
-              {...card.cards[0]} onDelete={() => { deleteCategory(card._id); }}
+              {...card.cards[0]} onDelete={() => { deleteCategory(card._id, card.name); }}
               Click={() => openWordsPage(index, card.name)} />
           ))
         }
