@@ -14,11 +14,11 @@ interface IProps {
   _id: string;
   cards: IWord[];
   onDelete: () => void;
-  onClick: () => void;
+  Click: () => void;
 }
 
 export default function CategoryCard({
-  name, imageUrl, _id, cards, onDelete, onClick
+  name, imageUrl, _id, cards, onDelete, Click
 }: IProps) {
   const dispatch = useDispatch();
   const categoriesCards = useSelector(
@@ -60,6 +60,16 @@ export default function CategoryCard({
     setEdit(false);
   };
 
+  const changeToEditMode = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setEdit(true);
+  }
+
+  const deleteCard = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    onDelete();
+  }
+
   if (edit) {
     return (
       <div className='card'>
@@ -83,17 +93,17 @@ export default function CategoryCard({
           </label>
         </div>
         <div className="buttons">
-          <Button classNames='button button-secondary'
+          <Button classNames='button-secondary'
             text='Update' onClick={updateCategory} />
-          <Button classNames='button button-warning'
+          <Button classNames='button-warning'
             text='Cancel' onClick={() => setEdit(false)} />
         </div>
       </div>
     );
   }
   return (
-    <div className='card' onClick={onClick}>
-      <DeleteIcon onClick={onDelete} className='delete-icon' />
+    <div className='card' onClick={Click}>
+      <DeleteIcon onClick={deleteCard} className='delete-icon' />
       <div className="card-image" style={{ backgroundImage: `url('${imageUrl}')` }}></div>
       <div className="card-description">
         <h2 className="card-name">{name}</h2>
@@ -101,7 +111,7 @@ export default function CategoryCard({
       </div>
       <div className="buttons">
         <Button classNames='button-secondary'
-          text='Update' onClick={() => setEdit(true)} />
+          text='Update' onClick={changeToEditMode} />
         <Button classNames='button-secondary'
           text='Add word' onClick={() => { }} />
       </div>

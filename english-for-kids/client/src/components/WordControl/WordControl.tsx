@@ -5,17 +5,13 @@ import setCategories from '../../redux/actions/setCategories';
 import Button from '../../shared/Button/button';
 import { ICategory } from '../../shared/models/category-model';
 
-export default function CardControl() {
+export default function WordControl() {
   const dispatch = useDispatch();
   const { request } = useHttp();
-  const [categoryInfo, setInfo] = useState({ name: '', imageUrl: '' });
-
-  const categoriesCards = useSelector(
-    ({ categories }: { categories: { items: ICategory[] } }) => categories.items,
-  );
+  const [wordInfo, setInfo] = useState({ word: '', wordImage: '', translation: '' });
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInfo({ ...categoryInfo, [event.target.name]: event.target.value });
+    setInfo({ ...wordInfo, [event.target.name]: event.target.value });
   };
 
   const changeFileHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,22 +26,16 @@ export default function CardControl() {
         reader.readAsDataURL(files[0]);
       }
     });
-    setInfo({ ...categoryInfo, [event.target.name]: url });
+    setInfo({ ...wordInfo, [event.target.name]: url });
   };
 
   const clearInputs = () => {
-    setInfo({ name: '', imageUrl: '' });
-  };
-
-  const createCategory = async () => {
-    const { newCard } = await request('categories/', 'POST', categoryInfo);
-    dispatch(setCategories([...categoriesCards, newCard]));
-    clearInputs();
+    setInfo({ word: '', wordImage: '', translation: '' });
   };
 
   return (
-    <div className='card template-card'>
-      <div className="card-image" style={{ backgroundImage: `url('${categoryInfo.imageUrl}')` }}>
+    <div className='card card-template'>
+      <div className="card-image" style={{ backgroundImage: `url('${wordInfo.wordImage}')` }}>
         <label htmlFor="imageInput" className='fileinput'>
           Upload image
           <input
@@ -57,20 +47,29 @@ export default function CardControl() {
         </label>
       </div>
       <div className="card-description">
-        <label htmlFor="name">
-          Category name <br />
+        <label htmlFor="word">
+          Word <br />
           <input
             type="text"
-            name="name"
-            value={categoryInfo.name}
+            name="word"
+            value={wordInfo.word}
+            onChange={changeHandler}
+          />
+        </label>
+        <label htmlFor="translation">
+          Translation <br />
+          <input
+            type="text"
+            name="translation"
+            value={wordInfo.translation}
             onChange={changeHandler}
           />
         </label>
       </div>
       <div className="buttons">
-        <Button classNames='button button-secondary'
-          text='Create category' onClick={createCategory} />
-        <Button classNames='button button-warning'
+        <Button classNames='button-secondary'
+          text='Add word' onClick={() => { }} />
+        <Button classNames='button-warning'
           text='Clear' onClick={clearInputs} />
       </div>
     </div>

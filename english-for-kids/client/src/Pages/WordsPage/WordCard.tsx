@@ -18,13 +18,12 @@ export default function WordCard({ word, wordImage, audio, translation }: IProps
     <div className='card'>
       <DeleteIcon className='delete-icon' />
       <div className="card-image" style={{ backgroundImage: `url('${wordImage}')` }}></div>
-      <div className="card-description">
-        <h2 className="card-name">{word}</h2>
-      </div>
-      <div className="buttons">
-        <Button classNames='button-secondary'
-          text='Update' onClick={() => setEdit(true)} />
-      </div>
+      <ul className="card-description">
+        <li className="card-name"><b>Word:</b> {word}</li>
+        <li className="card-name"><b>Translation:</b> {translation}</li>
+      </ul>
+      <Button classNames='button-secondary'
+        text='Update' onClick={() => setEdit(true)} />
     </div>
   );
 }

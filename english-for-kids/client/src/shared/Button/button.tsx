@@ -3,7 +3,7 @@ import './button.scss';
 interface IProps {
   classNames: string;
   text: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export default function Button({ classNames, text, onClick }: IProps) {
