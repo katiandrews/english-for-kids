@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from './components/header/header';
+import Header from './components/Header/Header';
 import Main from './Pages/MainPage/MainPage';
-import Footer from './components/footer/footer';
+import Footer from './components/Footer/Footer';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
 import Statistics from './Pages/Statistics/Statistics';
 import setCategories from './redux/actions/setCategories';

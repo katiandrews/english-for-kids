@@ -5,7 +5,7 @@ import { ICategory } from '../../shared/models/category-model';
 import './AdminPage.scss';
 import useHttp from '../../hooks/http.hook';
 import setCategories from '../../redux/actions/setCategories';
-import CardControl from '../../components/cardControl/cardControl';
+import CardControl from '../../components/CardControl/CardControl';
 import setCategory from '../../redux/actions/activeCategory';
 
 interface IStateProperties {

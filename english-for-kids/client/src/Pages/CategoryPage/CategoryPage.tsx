@@ -49,20 +49,6 @@ export default function CategoryPage() {
     dispatch(setPoints([]));
   }, [dispatch, category.cards]);
 
-  function getRandomAudio() {
-    const randomIndex = Math.floor(Math.random() * categoryAudios.current.length);
-    const wordSound = categoryAudios.current[randomIndex];
-    categoryAudios.current.splice(randomIndex, 1);
-    return wordSound;
-  }
-
-  const playAudio = (url: string) => {
-    const audio = new Audio();
-    audio.src = url;
-    audio.currentTime = 0;
-    audio.play();
-  };
-
   useEffect(() => {
     if (gameStarted) {
       word.current = getRandomAudio();
@@ -70,11 +56,24 @@ export default function CategoryPage() {
     }
   }, [gameStarted]);
 
+  function getRandomAudio() {
+    const randomIndex = Math.floor(Math.random() * categoryAudios.current.length);
+    const wordSound = categoryAudios.current[randomIndex];
+    categoryAudios.current.splice(randomIndex, 1);
+    return wordSound;
+  }
+
+  function playAudio(url: string) {
+    const audio = new Audio();
+    audio.src = url;
+    audio.currentTime = 0;
+    audio.play();
+  }
+
   const endGame = () => {
     setGameEnded(true);
     setGameStarted(false);
-    if (points.includes(false)) playAudio(failureSound);
-    else playAudio(successSound);
+    playAudio(points.includes(false) ? failureSound : successSound);
     setTimeout(() => {
       history.push('/');
     }, 2000);

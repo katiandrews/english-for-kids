@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Menu from './menu/menu';
+import Menu from './Menu/Menu';
 import './header.scss';
-import ToggleButton from '../../shared/toggleButton/toggleButton';
 import setMode from '../../redux/actions/setMode';
 import Button from '../../shared/Button/button';
+import ToggleButton from '../../shared/ToggleButton/toggleButton';
 
 interface IProps {
   onLoginClick: () => void;
