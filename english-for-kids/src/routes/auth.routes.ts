@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import config from 'config';
 import jwt from 'jsonwebtoken';
+import config from '../config/default';
 import User from '../schemas/user';
 
 const router = Router();
@@ -13,13 +13,13 @@ router.post('/login', async (req, res) => {
 
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: 'There is no such user' });
-    
+
     const isPasswordMatch = password === user.password;
     if (!isPasswordMatch) return res.status(400).json({ message: 'Incorrect password' });
 
     const token = jwt.sign(
       { userId: user.id },
-      config.get('jwtSecret'),
+      config.jwtSecret,
       { expiresIn: '1h' },
     );
     res.json({ token, userId: user.id });
