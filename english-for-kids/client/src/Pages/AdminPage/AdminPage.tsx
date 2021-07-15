@@ -34,7 +34,7 @@ export default function AdminPanel() {
 
   const openWordsPage = async (index: number, name: string) => {
     dispatch(setCategory(index));
-    history.push(`${name}/words`);
+    history.push(`/${name}/words`);
   };
 
   return (
