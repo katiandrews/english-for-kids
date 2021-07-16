@@ -11,8 +11,7 @@ export function PointsScale() {
   const renderStars = () => {
     const result: JSX.Element[] = [];
     currentPoints.forEach((point, index) => {
-      if (point) result.push(<Star key={index} />);
-      else result.push(<EmptyStar key={index} />);
+      result.push(point ? <Star key={index} /> : <EmptyStar key={index} />);
     });
     return result;
   };

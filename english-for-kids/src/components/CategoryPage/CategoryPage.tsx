@@ -73,8 +73,7 @@ export function CategoryPage() {
   const endGame = () => {
     setGameEnded(true);
     setGameStarted(false);
-    if (points.includes(false)) playAudio(failureSound);
-    else playAudio(successSound);
+    playAudio(points.includes(false) ? failureSound : successSound);
     setTimeout(() => {
       history.push('/');
     }, 2000);
