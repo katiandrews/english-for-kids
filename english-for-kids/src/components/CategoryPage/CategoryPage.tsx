@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Card from '../../shared/Card/Card';
 import { ICategory } from '../../shared/models/category-model';
-import Button from '../../shared/Button/button';
+import Button from '../../shared/Button/Button';
 import './CategoryPage.scss';
 import correct from '../../assets/audio/correct.mp3';
 import wrong from '../../assets/audio/wrong.mp3';
@@ -22,7 +22,7 @@ interface IStateProperties {
   pointsScale: boolean[];
 }
 
-export default function CategoryPage() {
+export function CategoryPage() {
   const { category, isTrainMode, points } = useSelector(({
     categories, activeCategory, trainMode, pointsScale,
   }: IStateProperties) => ({
@@ -125,7 +125,7 @@ export default function CategoryPage() {
           category.cards.map((card, index) => (
             <Card key={index} {...category} {...card}
               classNames={disabledCards.includes(index) ? 'disabled' : ''}
-              onClick={ isTrainMode ? () => trainModeClickHandler(card) : () => answerHandler(card, index)}
+              onClick={isTrainMode ? () => trainModeClickHandler(card) : () => answerHandler(card, index)}
             />))
         }
       </div>

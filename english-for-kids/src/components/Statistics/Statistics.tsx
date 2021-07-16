@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Button from '../../shared/Button/button';
+import Button from '../../shared/Button/Button';
 import { ICategory } from '../../shared/models/category-model';
 import Table from '../../shared/Table/Table';
 import './Statistics.scss';

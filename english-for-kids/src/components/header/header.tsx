@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Menu from './menu/menu';
-import './header.scss';
-import ToggleButton from '../../shared/toggleButton/toggleButton';
+import './Header.scss';
 import setMode from '../../redux/actions/setMode';
-import Button from '../../shared/Button/button';
+import Button from '../../shared/Button/Button';
+import ToggleButton from '../../shared/ToggleButton/ToggleButton';
+import { Menu } from './Menu/Menu';
 
 export default function Header() {
   const dispatch = useDispatch();

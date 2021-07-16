@@ -5,14 +5,14 @@ import MenuIcon from '../../../assets/img/menu.svg';
 import setCategory from '../../../redux/actions/activeCategory';
 import MAIN_PAGE from '../../../shared/constants';
 import { ICategory } from '../../../shared/models/category-model';
-import './menu.scss';
+import './Menu.scss';
 
 interface IStateProperties {
   categories: { items: ICategory[] };
   activeCategory: number;
 }
 
-export default function Menu() {
+export function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const dispatch = useDispatch();

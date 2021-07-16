@@ -1,4 +1,4 @@
-import './button.scss';
+import './Button.scss';
 
 interface IProps {
   classNames: string;

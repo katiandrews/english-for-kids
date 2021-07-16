@@ -1,4 +1,4 @@
-import './toggleButton.scss';
+import './ToggleButton.scss';
 
 export default function ToggleButton({ onClick }: { onClick: () => void }) {
   return (
