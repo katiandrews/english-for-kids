@@ -1,6 +1,6 @@
 import './ToggleButton.scss';
 
-export default function ToggleButton({ onClick }: { onClick: () => void }) {
+export function ToggleButton({ onClick }: { onClick: () => void }) {
   return (
     <label className="switch" >
       <input type="checkbox" className="mode-checkbox" onClick={onClick} />

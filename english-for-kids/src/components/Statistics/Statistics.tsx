@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Button from '../../shared/Button/Button';
+import { Button } from '../../shared/Button/Button';
 import { ICategory } from '../../shared/models/category-model';
-import Table from '../../shared/Table/Table';
+import { Table } from '../../shared/Table/Table';
 import './Statistics.scss';
 
 const tableColumns = ['Category', 'Word', 'Translation', 'Trained', 'Correct', 'Incorrect', '% Correct'];
 
-export default function Statistics() {
+export function Statistics() {
   const categoriesData = useSelector(
     ({ categories }: { categories: { items: ICategory[] } }) => categories.items,
   );

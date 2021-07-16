@@ -16,7 +16,7 @@ interface IProps {
   onClick: () => boolean | void,
 }
 
-export default function Card({
+export function Card({
   classNames = '', name, imageUrl, cards, translation, word, wordImage, onClick,
 }: IProps) {
   const isTrainMode = useSelector(

@@ -3,7 +3,7 @@ import Star from '../../assets/img/star.svg';
 import EmptyStar from '../../assets/img/empty-star.svg';
 import './PointsScale.scss';
 
-export default function PointsScale() {
+export function PointsScale() {
   const currentPoints = useSelector(
     ({ pointsScale }: { pointsScale: boolean[] }) => pointsScale,
   );

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MenuIcon from '../../../assets/img/menu.svg';
 import setCategory from '../../../redux/actions/activeCategory';
-import MAIN_PAGE from '../../../shared/constants';
+import { MAIN_PAGE } from '../../../shared/constants';
 import { ICategory } from '../../../shared/models/category-model';
 import './Menu.scss';
 

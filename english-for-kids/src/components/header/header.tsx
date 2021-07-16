@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Header.scss';
 import setMode from '../../redux/actions/setMode';
-import Button from '../../shared/Button/Button';
-import ToggleButton from '../../shared/ToggleButton/ToggleButton';
+import { Button } from '../../shared/Button/Button';
+import { ToggleButton } from '../../shared/ToggleButton/ToggleButton';
 import { Menu } from './Menu/Menu';
 
-export default function Header() {
+export function Header() {
   const dispatch = useDispatch();
   const currentMode = useSelector(
     ({ trainMode }: { trainMode: boolean }) => trainMode,
