@@ -8,11 +8,10 @@ import { ICategory } from '../../shared/models/category-model';
 import './MainPage.scss';
 
 export function Main() {
+  const dispatch = useDispatch();
   const cards = useSelector(
     ({ categories }: { categories: { items: ICategory[] } }) => categories.items,
   );
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setCategory(MAIN_PAGE));

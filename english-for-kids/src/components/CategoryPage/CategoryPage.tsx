@@ -49,6 +49,13 @@ export function CategoryPage() {
     dispatch(setPoints([]));
   }, [dispatch, category.cards]);
 
+  useEffect(() => {
+    if (gameStarted) {
+      word.current = getRandomAudio();
+      playAudio(word.current);
+    }
+  }, [gameStarted]);
+
   function getRandomAudio() {
     const randomIndex = Math.floor(Math.random() * categoryAudios.current.length);
     const wordSound = categoryAudios.current[randomIndex];
@@ -56,19 +63,12 @@ export function CategoryPage() {
     return wordSound;
   }
 
-  const playAudio = (url: string) => {
+  function playAudio(url: string) {
     const audio = new Audio();
     audio.src = url;
     audio.currentTime = 0;
     audio.play();
-  };
-
-  useEffect(() => {
-    if (gameStarted) {
-      word.current = getRandomAudio();
-      playAudio(word.current);
-    }
-  }, [gameStarted]);
+  }
 
   const endGame = () => {
     setGameEnded(true);
