@@ -14,15 +14,18 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
+    const { word, image, audio, translation } = req.body;
     const newWord = new Word({
       category: req.query.category,
-      word: req.body.word,
-      image: req.body.image,
-      audio: req.body.audio,
-      translation: req.body.translation,
+      word,
+      image,
+      audio,
+      translation,
     });
+
     await newWord.save();
     res.status(201).json({ newWord });
+
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong, try again' });
   }
