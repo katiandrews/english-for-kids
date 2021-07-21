@@ -1,7 +1,7 @@
 import cookieSession from 'cookie-session';
 import express from 'express';
 import cors from 'cors';
-import log from './logger/index';
+import log from './logger';
 import connect from './db/connect';
 import config from './config/default';
 
