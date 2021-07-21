@@ -32,7 +32,7 @@ export function WordControl() {
       <div className="card-image" style={{ backgroundImage: `url('${wordInfo.wordImage}')` }}>
         <label htmlFor="imageInput" className='fileinput'>
           Upload image
-          <input type='file' name='imageUrl' id='imageInput' onChange={changeFileHandler} />
+          <input type='file' name='wordImage' id='imageInput' onChange={changeFileHandler} />
         </label>
       </div>
       <div className="card-description">

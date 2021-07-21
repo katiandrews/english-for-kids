@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Menu } from './Menu/Menu';
-import './header.scss';
+import './Header.scss';
 import setMode from '../../redux/actions/setMode';
 import { Button } from '../../shared/Button/Button';
 import { ToggleButton } from '../../shared/ToggleButton/ToggleButton';

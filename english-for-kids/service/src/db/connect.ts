@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import config from '../config/default';
-import log from '../logger';
+import { log } from '../logger';
 
 function connect() {
-  const dbUri = config.dbUri;
+  const { dbUri } = config;
   try {
     mongoose
       .connect(dbUri, {
