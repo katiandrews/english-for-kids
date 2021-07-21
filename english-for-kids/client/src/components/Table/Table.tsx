@@ -7,7 +7,7 @@ interface IProps {
   wordsData: ICategory[];
 }
 
-export default function Table({ thead, wordsData }: IProps) {
+export function Table({ thead, wordsData }: IProps) {
   const calcPercOfCorrectClicks = (word: IWord) => {
     const correctClicks = Number(localStorage.getItem(`${word.word} correct`));
     const incorrectClicks = Number(localStorage.getItem(`${word.word} wrong`));

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../shared/Button/button';
+import { Button } from '../../shared/Button/Button';
 import { IWord } from '../../shared/models/WordCard';
 import DeleteIcon from '../../assets/img/delete.svg';
 import useHttp from '../../hooks/http.hook';
@@ -17,7 +17,7 @@ interface IProps {
   Click: () => void;
 }
 
-export default function CategoryCard({
+export function CategoryCard({
   name, imageUrl, _id, cards, onDelete, Click,
 }: IProps) {
   const dispatch = useDispatch();

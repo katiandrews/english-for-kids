@@ -1,6 +1,6 @@
 import './footer.scss';
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className='main-footer'>
       <div className="footer-githubLink">

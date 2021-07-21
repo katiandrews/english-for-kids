@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from './components/Header/Header';
-import Main from './Pages/MainPage/MainPage';
-import Footer from './components/Footer/Footer';
-import CategoryPage from './Pages/CategoryPage/CategoryPage';
-import Statistics from './Pages/Statistics/Statistics';
+import { Header } from './components/Header/Header';
+import { Main } from './Pages/MainPage/MainPage';
+import { Footer } from './components/Footer/Footer';
+import { CategoryPage } from './Pages/CategoryPage/CategoryPage';
+import { Statistics } from './Pages/Statistics/Statistics';
 import setCategories from './redux/actions/setCategories';
-import AdminPanel from './Pages/AdminPage/AdminPage';
-import LoginForm from './components/LoginForm/LoginForm';
+import { AdminPanel } from './Pages/AdminPage/AdminPage';
+import { LoginForm } from './components/LoginForm/LoginForm';
 import useAuth from './hooks/auth.hook';
 import AuthContext from './context/AuthContext';
 import useHttp from './hooks/http.hook';
 import { ICategory } from './shared/models/category-model';
-import WordsPage from './Pages/WordsPage/WordsPage';
-import AdminHeader from './components/AdminHeader/AdminHeader';
+import { WordsPage } from './Pages/WordsPage/WordsPage';
+import { AdminHeader } from './components/AdminHeader/AdminHeader';
 
 interface IStateProperties {
   categories: { items: ICategory[] };

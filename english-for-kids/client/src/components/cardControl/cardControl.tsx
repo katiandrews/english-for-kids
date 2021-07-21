@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useHttp from '../../hooks/http.hook';
 import setCategories from '../../redux/actions/setCategories';
-import Button from '../../shared/Button/button';
+import { Button } from '../../shared/Button/Button';
 import { ICategory } from '../../shared/models/category-model';
 
-export default function CardControl() {
+export function CardControl() {
   const dispatch = useDispatch();
   const { request } = useHttp();
   const [categoryInfo, setInfo] = useState({ name: '', imageUrl: '' });

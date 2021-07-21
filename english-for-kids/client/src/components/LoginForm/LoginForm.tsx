@@ -10,7 +10,7 @@ interface IProps {
   close: () => void;
 }
 
-export default function LoginForm({ classNames, close }: IProps) {
+export function LoginForm({ classNames, close }: IProps) {
   const [form, setForm] = useState({
     email: '', password: '',
   });
@@ -46,7 +46,7 @@ export default function LoginForm({ classNames, close }: IProps) {
       <div className='login-form'>
         <h2>Login</h2>
         <span>Чтобы войти, введите следующие данные: <br />
-          login:<b>admin@mail.ru</b>, password:<b>admin</b></span>
+          login: <b>admin@mail.ru</b>, password: <b>admin</b></span>
         <p className={errorNotify.display ? 'form-error' : 'visually-hidden'}>{errorNotify.message}</p>
         <form action="" className="form-content">
           <label htmlFor="">

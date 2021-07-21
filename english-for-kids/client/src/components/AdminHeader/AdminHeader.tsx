@@ -9,7 +9,7 @@ interface IStateProperties {
   categories: { items: ICategory[] };
 }
 
-export default function AdminHeader() {
+export function AdminHeader() {
   const history = useHistory();
   const auth = useContext(AuthContext);
 

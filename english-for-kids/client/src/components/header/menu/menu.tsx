@@ -12,7 +12,7 @@ interface IStateProperties {
   activeCategory: number;
 }
 
-export default function Menu() {
+export function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const dispatch = useDispatch();

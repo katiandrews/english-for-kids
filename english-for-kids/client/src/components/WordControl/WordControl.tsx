@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Button from '../../shared/Button/button';
+import { Button } from '../../shared/Button/Button';
 
-export default function WordControl() {
+export function WordControl() {
   const [wordInfo, setInfo] = useState({ word: '', wordImage: '', translation: '' });
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {

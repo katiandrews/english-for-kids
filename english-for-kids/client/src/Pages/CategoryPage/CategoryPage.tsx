@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Card from '../../shared/Card/Card';
+import { Card } from '../../shared/Card/Card';
 import { ICategory } from '../../shared/models/category-model';
-import Button from '../../shared/Button/button';
+import { Button } from '../../shared/Button/Button';
 import './CategoryPage.scss';
 import correct from '../../assets/audio/correct.mp3';
 import wrong from '../../assets/audio/wrong.mp3';
-import PointsScale from './PointsScale';
+import { PointsScale } from './PointsScale';
 import setPoints from '../../redux/actions/pointsScale';
 import successImg from '../../assets/img/game-success.png';
 import failureImg from '../../assets/img/failure.png';
@@ -22,7 +22,7 @@ interface IStateProperties {
   pointsScale: boolean[];
 }
 
-export default function CategoryPage() {
+export function CategoryPage() {
   const { category, isTrainMode, points } = useSelector(({
     categories, activeCategory, trainMode, pointsScale,
   }: IStateProperties) => ({

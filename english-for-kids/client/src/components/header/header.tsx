@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Menu from './Menu/Menu';
+import { Menu } from './Menu/Menu';
 import './header.scss';
 import setMode from '../../redux/actions/setMode';
-import Button from '../../shared/Button/button';
-import ToggleButton from '../../shared/ToggleButton/toggleButton';
+import { Button } from '../../shared/Button/Button';
+import { ToggleButton } from '../../shared/ToggleButton/ToggleButton';
 
 interface IProps {
   onLoginClick: () => void;
 }
 
-export default function Header({ onLoginClick }: IProps) {
+export function Header({ onLoginClick }: IProps) {
   const dispatch = useDispatch();
   const currentMode = useSelector(
     ({ trainMode }: { trainMode: boolean }) => trainMode,

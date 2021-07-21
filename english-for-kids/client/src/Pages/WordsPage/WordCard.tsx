@@ -1,6 +1,6 @@
 import DeleteIcon from '../../assets/img/delete.svg';
 import PlayIcon from '../../assets/img/play-button.png';
-import Button from '../../shared/Button/button';
+import { Button } from '../../shared/Button/Button';
 
 interface IProps {
   word: string;
@@ -10,7 +10,7 @@ interface IProps {
   onDelete: () => void;
 }
 
-export default function WordCard({
+export function WordCard({
   word, wordImage, audio, translation, onDelete,
 }: IProps) {
   const playAudio = (url: string) => {

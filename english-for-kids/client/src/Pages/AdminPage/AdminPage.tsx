@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import CategoryCard from './CategoryCard';
+import { CategoryCard } from './CategoryCard';
 import { ICategory } from '../../shared/models/category-model';
 import './AdminPage.scss';
 import useHttp from '../../hooks/http.hook';
 import setCategories from '../../redux/actions/setCategories';
-import CardControl from '../../components/CardControl/CardControl';
+import { CardControl } from '../../components/CardControl/CardControl';
 import setCategory from '../../redux/actions/activeCategory';
 
 interface IStateProperties {
@@ -13,7 +13,7 @@ interface IStateProperties {
   activeCategory: number;
 }
 
-export default function AdminPanel() {
+export function AdminPanel() {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -38,17 +38,15 @@ export default function AdminPanel() {
   };
 
   return (
-    <>
-      <div className="admin-categories">
-        <CardControl />
-        {
-          cards.map((card, index) => (
-            <CategoryCard classNames='' key={index + 1} {...card}
-              {...card.cards[0]} onDelete={() => { deleteCategory(card._id, card.name); }}
-              Click={() => openWordsPage(index, card.name)} />
-          ))
-        }
-      </div>
-    </>
+    <div className="admin-categories">
+      <CardControl />
+      {
+        cards.map((card, index) => (
+          <CategoryCard classNames='' key={index + 1} {...card}
+            {...card.cards[0]} onDelete={() => { deleteCategory(card._id, card.name); }}
+            Click={() => openWordsPage(index, card.name)} />
+        ))
+      }
+    </div>
   );
 }

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import WordControl from '../../components/WordControl/WordControl';
+import { WordControl } from '../../components/WordControl/WordControl';
 import useHttp from '../../hooks/http.hook';
 import setWords from '../../redux/actions/setWords';
 import { ICategory } from '../../shared/models/category-model';
 import { IWord } from '../../shared/models/WordCard';
-import WordCard from './WordCard';
+import { WordCard } from './WordCard';
 import './WordsPage.scss';
 
 interface IStateProperties {
@@ -14,7 +14,7 @@ interface IStateProperties {
   words: IWord[]
 }
 
-export default function WordsPage() {
+export function WordsPage() {
   const { category, wordsItems } = useSelector(({ categories, activeCategory, words }: IStateProperties) => ({
     category: categories.items[activeCategory],
     wordsItems: words,
