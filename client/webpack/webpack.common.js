@@ -1,10 +1,11 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
-module.exports = {
-  entry: path.resolve(__dirname, '..', './src/index.tsx'),
+module.exports = (envs) => ({
+  entry: path.resolve(__dirname, "..", "./src/index.tsx"),
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
   },
   module: {
     rules: [
@@ -13,37 +14,44 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
           },
         ],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|mp3)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.svg$/i,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/inline',
+        type: "asset/inline",
       },
     ],
   },
   output: {
-    path: path.resolve(__dirname, '..', './build'),
-    filename: 'bundle.js',
-    assetModuleFilename: 'assets/[hash][ext]',
+    path: path.resolve(__dirname, "..", "./build"),
+    filename: "bundle.js",
+    assetModuleFilename: "assets/[hash][ext]",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '..', './src/index.html'),
-      favicon: path.resolve(__dirname, '..', './src/assets/img/favicon-16x16.png'),
+      template: path.resolve(__dirname, "..", "./src/index.html"),
+      favicon: path.resolve(
+        __dirname,
+        "..",
+        "./src/assets/img/favicon-16x16.png"
+      ),
+    }),
+    new webpack.DefinePlugin({
+      "process.env.API": JSON.stringify(envs.API),
     }),
   ],
-}
+});
