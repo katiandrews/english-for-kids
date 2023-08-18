@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 
-// const base = 'https://damp-everglades-21497.herokuapp.com/api';
-const base = 'http://localhost:8081';
+const base = process.env.API;
 
 const useHttp = () => {
   const [loading, setLoading] = useState(false);
