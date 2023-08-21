@@ -6,11 +6,10 @@ import useHttp from '../../hooks/http.hook';
 import './LoginForm.scss';
 
 interface IProps {
-  classNames: string;
   close: () => void;
 }
 
-export function LoginForm({ classNames, close }: IProps) {
+export function LoginForm({ close }: IProps) {
   const [form, setForm] = useState({
     email: '', password: '',
   });
@@ -42,7 +41,7 @@ export function LoginForm({ classNames, close }: IProps) {
   };
 
   return (
-    <div ref={loginForm} className={`login-background ${classNames}`} onClick={closeForm}>
+    <div ref={loginForm} className="login-background" onClick={closeForm}>
       <div className='login-form'>
         <h2>Login</h2>
         <span>Чтобы войти, введите следующие данные: <br />
