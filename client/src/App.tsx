@@ -85,7 +85,7 @@ export default function App() {
         </Switch>
       </main>
       <Footer />
-      <LoginForm classNames={formState ? '' : 'visually-hidden'} close={closeLoginForm} />
+      {formState && <LoginForm close={closeLoginForm} />}
     </AuthContext.Provider >
   );
 }

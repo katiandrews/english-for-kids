@@ -5,6 +5,7 @@ import setCategory from '../../redux/actions/activeCategory';
 import { Card } from '../../shared/Card/Card';
 import MAIN_PAGE from '../../shared/constants';
 import { ICategory } from '../../shared/models/category-model';
+import { Loader } from '../../shared/Loader/Loader';
 import './MainPage.scss';
 
 export function Main() {
@@ -27,13 +28,14 @@ export function Main() {
         <h1 className='page-title'>Train & play</h1>
       </div>
       <div className="categories">
-        {
+        {cards.length ? (
           cards.map((card, index) => (
             <Link to='/category' key={index}>
               <Card classNames='' key={index} {...card} {...card.cards[0]}
                 onClick={() => onSelectCategory(index)} />
             </Link>
           ))
+        ) : <Loader/>
         }
       </div>
     </>

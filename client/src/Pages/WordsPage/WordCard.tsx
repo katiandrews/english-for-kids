@@ -1,6 +1,5 @@
 import DeleteIcon from '../../assets/img/delete.svg';
 import PlayIcon from '../../assets/img/play-button.png';
-import { Button } from '../../shared/Button/Button';
 
 interface IProps {
   word: string;
@@ -32,8 +31,6 @@ export function WordCard({
           <img src={PlayIcon} alt="play" /> Play
         </li>
       </ul>
-      <Button classNames='button-secondary'
-        text='Update' onClick={() => { }} />
     </div>
   );
 }

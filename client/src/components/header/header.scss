@@ -1,6 +1,8 @@
 .main-header {
   display: flex;
   max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;

@@ -7,6 +7,12 @@ body {
   font-family: sans-serif;
 }
 
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
 .button-container {
   display: flex;
   gap: 16px;

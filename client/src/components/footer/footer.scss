@@ -5,9 +5,12 @@
   box-sizing: border-box;
   padding: 16px 10%;
   width: 100%;
-  background-color: rgb(128, 63, 214);
+  background-color: rgb(255,72,90);
   color: #fff;
   font-size: 20px;
+  position: sticky;
+  bottom: 0;
+  flex-wrap: wrap;
   
   & a {
     color: #fff;
